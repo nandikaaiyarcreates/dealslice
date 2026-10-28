@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DealSlice — Deal Data Column Selector</title>
+<meta name="description" content="Turn a full deal data pull into a focused, task-ready export.">
+<style>
+/*! tailwindcss v4.2.1 | MIT License | https://tailwindcss.com */
+@layer theme{:root,:host{--font-sans:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--spacing:.25rem;--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,:after,:before{box-sizing:border-box;border:0 solid;margin:0;padding:0}::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab, red, red)){::placeholder{color:color-mix(in oklab, currentcolor 50%, transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;appearance:button}::file-selector-button{-webkit-appearance:button;appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.relative{position:relative}.start{inset-inline-start:var(--spacing)}.hidden{display:none}.table{display:table}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}}:root{--ink:#101828;--paper:#f8f9fb;--surface:#fff;--line:#dce2eb;--purple:#5a2dff;--purple-soft:#f2efff;--blue:#1769f6;--blue-soft:#edf4ff;--yellow:#fff36a;--muted:#667085}*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--paper);color:var(--ink);margin:0;font-family:Arial,Helvetica,sans-serif}button,input{font:inherit}button{color:inherit}.topbar{border-bottom:1px solid var(--line);background:var(--surface);justify-content:space-between;align-items:center;height:68px;padding:0 4vw;display:flex}.brand{color:inherit;letter-spacing:-.03em;align-items:center;gap:10px;font-size:18px;font-weight:800;text-decoration:none;display:flex}.brand-mark{background:var(--purple);color:#fff;border-radius:9px;place-items:center;width:33px;height:33px;font:700 11px/1 monospace;display:grid}.privacy{color:var(--muted);align-items:center;gap:8px;font-size:12px;display:flex}.privacy-dot{background:#2fc778;border-radius:50%;width:7px;height:7px;box-shadow:0 0 0 4px #2fc7781f}.hero{text-align:center;max-width:820px;margin:0 auto;padding:74px 24px 52px}.eyebrow{background:var(--yellow);letter-spacing:.13em;border:1px solid #e8dd43;border-radius:999px;padding:8px 12px;font:700 10px/1 monospace;display:inline-block}.hero h1{letter-spacing:-.065em;margin:22px 0 16px;font-size:clamp(48px,7vw,82px);line-height:.93}.hero h1 em{color:var(--purple);font-family:Georgia,serif;font-weight:400}.hero p{max-width:560px;color:var(--muted);margin:0 auto;font-size:17px;line-height:1.55}.task-bar{border:1px solid var(--line);background:var(--surface);border-radius:13px;grid-template-columns:.75fr 1.45fr auto;align-items:center;gap:16px;width:min(1180px,92vw);margin:0 auto 18px;padding:14px 14px 14px 18px;display:grid;box-shadow:0 7px 20px #1018280d}.task-bar>div{flex-direction:column;gap:5px;display:flex}.task-kicker{color:var(--purple);letter-spacing:.12em;font:700 9px/1 monospace}.task-bar strong{font-size:13px}.task-bar input{background:#fbfcfe;border:1px solid #cfd7e4;border-radius:8px;outline:0;width:100%;height:42px;padding:0 13px;font-size:12px}.task-bar input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769f61a}.task-bar>button{background:var(--blue);color:#fff;cursor:pointer;border:0;border-radius:8px;align-items:center;gap:18px;height:42px;padding:0 15px;font-size:11px;font-weight:800;display:flex}.task-bar>button:hover{background:var(--purple)}.error-banner{color:#713025;background:#fff0ec;border:1px solid #cf5b46;border-radius:10px;align-items:center;gap:6px;width:min(1180px,92vw);margin:0 auto 18px;padding:12px 16px;font-size:12px;display:flex}.error-banner button{cursor:pointer;background:0 0;border:0;margin-left:auto;font-size:20px}.workspace{border:1px solid var(--line);background:var(--surface);border-radius:18px;grid-template-columns:.9fr 1.25fr .75fr;width:min(1180px,92vw);margin:0 auto 80px;display:grid;overflow:hidden;box-shadow:0 18px 55px #10182814}.step-card,.summary-card{min-width:0;padding:25px}.step-card{border-right:1px solid var(--line)}.step-label{text-transform:uppercase;letter-spacing:.09em;align-items:center;gap:10px;margin-bottom:22px;font:700 10px/1 monospace;display:flex}.step-label span{background:var(--blue);color:#fff;border-radius:50%;place-items:center;width:23px;height:23px;font-size:9px;display:grid}.step-label.light span{background:var(--purple);color:#fff}.dropzone{cursor:pointer;background:#fbfcfe;border:1.5px dashed #a9b7ca;border-radius:13px;flex-direction:column;justify-content:center;align-items:center;width:100%;min-height:315px;transition:all .2s;display:flex}.dropzone:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-2px)}.dropzone.dragging{border-style:solid;border-color:var(--purple);background:var(--purple-soft);transform:scale(1.01)}.dropzone.loaded{border-style:solid;border-color:var(--blue);background:var(--blue-soft);min-height:215px}.dropzone.processing{cursor:progress;border-style:solid;border-color:var(--purple);background:var(--purple-soft);transform:none}.dropzone:disabled{color:inherit;opacity:1}.dropzone.processing .upload-icon{animation:1.1s ease-in-out infinite processing-pulse}.dropzone .upload-icon{background:var(--purple-soft);width:48px;height:48px;color:var(--purple);border-radius:50%;place-items:center;margin-bottom:18px;font-size:24px;display:grid}.dropzone strong{font-size:15px}.dropzone small{color:var(--muted);margin-top:7px}.file-actions{grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;display:grid}.file-actions button{cursor:pointer;border-radius:8px;min-height:38px;font-size:11px;font-weight:700;transition:all .18s}.change-file-button{background:var(--blue-soft);color:var(--blue);border:1px solid #c9d8f2}.change-file-button:hover{border-color:var(--blue);background:#e3efff}.remove-file-button{color:#b4233c;background:#fff;border:1px solid #e4c9cf}.remove-file-button:hover{background:#fff3f5;border-color:#b4233c}.file-actions button:focus-visible{outline-offset:2px;outline:3px solid #1769f62e}.file-actions button:disabled,.sample-button:disabled{cursor:progress;opacity:.55}.sample-button{cursor:pointer;background:#f0f3f8;border:0;border-radius:8px;width:100%;margin-top:10px;padding:11px;font-size:11px;font-weight:700}.sample-button:hover{background:var(--purple-soft);color:var(--purple)}.upload-facts{gap:11px;margin-top:18px;display:grid}.upload-facts>div{grid-template-columns:85px 1fr;gap:9px;font-size:10px;line-height:1.4;display:grid}.upload-facts strong{font-size:10px}.upload-facts span{color:var(--muted)}.preset-row{flex-wrap:wrap;gap:7px;margin-bottom:16px;display:flex}.preset{border:1px solid var(--line);cursor:pointer;background:#fff;border-radius:7px;padding:8px 10px;font-size:11px}.preset:hover,.preset.active{background:var(--blue);color:#fff;border-color:var(--blue)}.hq-filter{background:var(--purple-soft);border:1px solid #ddd7ff;border-radius:10px;margin:0 0 16px;padding:12px}.hq-filter-heading{justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px;display:flex}.hq-filter-heading strong{font-size:11px}.hq-filter-heading span{color:#70688f;text-overflow:ellipsis;white-space:nowrap;max-width:58%;font:9px/1.2 monospace;overflow:hidden}.hq-filter-buttons{flex-wrap:wrap;gap:6px;display:flex}.hq-filter-buttons button{color:#3f3568;cursor:pointer;background:#fff;border:1px solid #cec4ff;border-radius:7px;min-height:29px;padding:0 8px;font-size:10px;font-weight:700}.hq-filter-buttons button span{color:#7c739c;margin-left:4px;font:8px/1 monospace}.hq-filter-buttons button:hover,.hq-filter-buttons button.active{border-color:var(--purple);background:var(--purple);color:#fff}.hq-filter-buttons button.active span{color:#e9e4ff}.hq-filter small{color:#70688f;margin-top:9px;font-size:9px;display:block}.step-heading{justify-content:space-between;align-items:flex-start;display:flex}.selection-actions{gap:4px;display:flex}.selection-actions button{color:#58635d;cursor:pointer;text-underline-offset:2px;background:0 0;border:0;font-size:10px;text-decoration:underline}.search-wrap{border:1px solid var(--line);border-radius:8px;align-items:center;gap:8px;height:40px;padding:0 11px;display:flex}.search-wrap span{color:var(--muted);font-size:19px}.search-wrap input{background:0 0;border:0;outline:0;width:100%;font-size:12px}.search-wrap button{color:var(--muted);cursor:pointer;background:0 0;border:0}.column-meta{color:#7b857f;justify-content:space-between;gap:8px;min-height:28px;padding:9px 2px 5px;font-size:9px;display:flex}.column-meta span:last-child{white-space:nowrap;text-overflow:ellipsis;max-width:65%;overflow:hidden}.column-list{border-top:1px solid var(--line);scrollbar-color:#b8bdb8 transparent;scrollbar-width:thin;height:330px;overflow:auto}.column-row{cursor:pointer;border-bottom:1px solid #eceae3;align-items:center;gap:10px;min-height:40px;display:flex;position:relative}.column-row input{opacity:0;position:absolute}.checkmark{border:1px solid #aeb7b1;border-radius:4px;flex:none;width:16px;height:16px}.column-row input:checked+.checkmark{border-color:var(--blue);background:var(--blue);box-shadow:inset 0 0 0 3px #fff}.column-row code{white-space:nowrap;text-overflow:ellipsis;font-size:11px;overflow:hidden}.field-tag{color:#8b938e;letter-spacing:.1em;margin-left:auto;font:700 8px/1 monospace}.empty-columns{color:var(--muted);text-align:center;padding:34px 12px;font-size:11px}.summary-card{color:var(--ink);background:#fafbff}.summary-count{border-bottom:1px solid var(--line);padding:18px 0 22px}.summary-count strong{color:var(--purple);letter-spacing:-.05em;font-size:58px;line-height:.9;display:block}.summary-count span{color:var(--muted);font-size:12px}.summary-list{min-height:187px;padding:17px 0}.summary-list div{white-space:nowrap;text-overflow:ellipsis;color:#344054;padding:7px 0;font:10px/1.2 monospace;overflow:hidden}.summary-list .more{color:var(--purple)}.summary-list .summary-empty{color:#98a2b3;font-family:Arial,sans-serif}.filename-label{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:11px;font:700 8px/1 monospace;display:block}.filename-label input{width:100%;height:35px;color:var(--ink);background:#fff;border:1px solid #cfd7e4;border-radius:7px;outline:0;margin-top:7px;padding:0 10px;font:10px/1 monospace}.filename-label input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769f614}.export-button{background:var(--blue);color:#fff;border:0;border-radius:9px;justify-content:space-between;align-items:center;width:100%;min-height:48px;padding:0 15px;font-size:12px;font-weight:800;display:flex}.export-button:not(:disabled){cursor:pointer}.export-button:not(:disabled):hover{background:var(--purple);color:#fff}.export-button:disabled,.secondary-exports button:disabled{cursor:not-allowed;opacity:.38}.secondary-exports{grid-template-columns:1fr;gap:7px;margin-top:7px;display:grid}.secondary-exports button{height:34px;color:var(--blue);cursor:pointer;background:#fff;border:1px solid #cfd7e4;border-radius:7px;font:700 9px/1 monospace}.secondary-exports button:not(:disabled):hover{border-color:var(--purple);color:var(--purple);background:var(--purple-soft)}.export-note{color:var(--muted);text-align:center;font-size:10px}.preview-section{width:min(1180px,92vw);margin:-35px auto 85px}.preview-heading{justify-content:space-between;align-items:end;margin-bottom:16px;display:flex}.preview-heading h2{letter-spacing:-.035em;margin:5px 0 0;font-size:28px}.preview-heading p{color:var(--muted);margin:0;font-size:11px}.table-wrap{border:1px solid var(--line);background:#fff;border-radius:12px;overflow:auto;box-shadow:0 12px 38px #1018280f}table{border-collapse:collapse;width:max-content;min-width:100%;font-size:11px}th,td{white-space:nowrap;text-overflow:ellipsis;text-align:left;border-bottom:1px solid #e2e1db;border-right:1px solid #e2e1db;max-width:290px;padding:12px 14px;overflow:hidden}th{color:#344054;letter-spacing:.02em;background:#f1f4f9;font:700 9px/1.2 monospace;position:sticky;top:0}td{color:#34433c}tbody tr:nth-child(2n){background:#faf9f5}.null-value{color:#a2aaa5;font-style:italic}.empty-preview{color:var(--muted);text-align:center;border:1px dashed #9aa49e;border-radius:12px;padding:35px}footer{border-top:1px solid var(--line);background:var(--surface);justify-content:space-between;align-items:center;min-height:100px;padding:25px 4vw;display:flex}footer>div{align-items:center;gap:9px;display:flex}footer p{color:var(--muted);font-size:11px}@keyframes processing-pulse{0%,to{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.05)}}@media (max-width:900px){.task-bar{grid-template-columns:1fr auto}.task-bar>div{grid-column:1/-1}.workspace{grid-template-columns:1fr 1fr}.selector-card{border-right:0}.summary-card{grid-column:1/-1}.summary-list{min-height:0}}@media (max-width:620px){.privacy{display:none}.hero{padding-top:50px}.task-bar{grid-template-columns:1fr;width:calc(100% - 24px)}.task-bar>div{grid-column:auto}.task-bar>button{justify-content:space-between}.workspace{grid-template-columns:1fr;width:calc(100% - 24px)}.step-card{border-right:0;border-bottom:1px solid var(--line)}.dropzone{min-height:210px}.column-meta span:last-child{display:none}.preview-section{width:calc(100% - 24px)}.preview-heading{flex-direction:column;align-items:start;gap:7px}footer{flex-direction:column;align-items:flex-start;gap:15px}}
+
+/* ---- Theme tokens and later additions. ---- */
+:root {
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --field-bg: #fbfcfe; --field-line: #cfd7e4;
+  --drop-bg: #fbfcfe; --drop-line: #a9b7ca;
+  --err-bg: #fff0ec; --err-ink: #713025;
+  --change-line: #c9d8f2; --change-hover: #e3efff;
+  --remove-bg: #fff; --remove-ink: #b4233c; --remove-line: #e4c9cf; --remove-hover: #fff3f5;
+  --sample-bg: #f0f3f8; --chip-bg: #fff;
+  --hq-line: #ddd7ff; --hq-muted: #70688f; --hq-btn-bg: #fff; --hq-btn-ink: #3f3568; --hq-btn-line: #cec4ff; --hq-count: #7c739c;
+  --link-muted: #58635d; --meta: #7b857f; --row-line: #eceae3; --check-line: #aeb7b1; --tag: #8b938e; --scroll-thumb: #b8bdb8;
+  --summary-bg: #fafbff; --summary-ink: #344054; --summary-empty: #98a2b3;
+  --table-line: #e2e1db; --th-bg: #f1f4f9; --th-ink: #344054; --td-ink: #34433c; --row-alt: #faf9f5; --null: #a2aaa5; --empty-line: #9aa49e;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ink: #e7eaf3; --paper: #0e1220; --surface: #151a2a; --line: #29314a;
+    --purple: #9179ff; --purple-soft: #221c44; --blue: #4f8dff; --blue-soft: #14223d; --muted: #9aa3b6;
+    --field-bg: #10162a; --field-line: #323c57; --drop-bg: #10162a; --drop-line: #46526e;
+    --err-bg: #3b1e1a; --err-ink: #ffb8aa; --change-line: #2b4273; --change-hover: #1b2f57;
+    --remove-bg: transparent; --remove-ink: #ff8fa3; --remove-line: #5b2a36; --remove-hover: #34161f;
+    --sample-bg: #1d2438; --chip-bg: #151a2a;
+    --hq-line: #3b3274; --hq-muted: #aaa2d6; --hq-btn-bg: #151a2a; --hq-btn-ink: #d6cfff; --hq-btn-line: #4a3f8e; --hq-count: #a79fd2;
+    --link-muted: #9aa3b6; --meta: #8a93a7; --row-line: #222a3d; --check-line: #58627c; --tag: #7e889c; --scroll-thumb: #46526e;
+    --summary-bg: #121729; --summary-ink: #c5cbd8; --summary-empty: #7e889c;
+    --table-line: #252d42; --th-bg: #1a2034; --th-ink: #c5cbd8; --td-ink: #cfd5e1; --row-alt: #131929; --null: #6e778b; --empty-line: #46526e;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e7eaf3; --paper: #0e1220; --surface: #151a2a; --line: #29314a;
+  --purple: #9179ff; --purple-soft: #221c44; --blue: #4f8dff; --blue-soft: #14223d; --muted: #9aa3b6;
+  --field-bg: #10162a; --field-line: #323c57; --drop-bg: #10162a; --drop-line: #46526e;
+  --err-bg: #3b1e1a; --err-ink: #ffb8aa; --change-line: #2b4273; --change-hover: #1b2f57;
+  --remove-bg: transparent; --remove-ink: #ff8fa3; --remove-line: #5b2a36; --remove-hover: #34161f;
+  --sample-bg: #1d2438; --chip-bg: #151a2a;
+  --hq-line: #3b3274; --hq-muted: #aaa2d6; --hq-btn-bg: #151a2a; --hq-btn-ink: #d6cfff; --hq-btn-line: #4a3f8e; --hq-count: #a79fd2;
+  --link-muted: #9aa3b6; --meta: #8a93a7; --row-line: #222a3d; --check-line: #58627c; --tag: #7e889c; --scroll-thumb: #46526e;
+  --summary-bg: #121729; --summary-ink: #c5cbd8; --summary-empty: #7e889c;
+  --table-line: #252d42; --th-bg: #1a2034; --th-ink: #c5cbd8; --td-ink: #cfd5e1; --row-alt: #131929; --null: #6e778b; --empty-line: #46526e;
+}
+
+.eyebrow { color: #101828; }
+.task-bar input { border-color: var(--field-line); background: var(--field-bg); color: var(--ink); }
+.error-banner { background: var(--err-bg); color: var(--err-ink); }
+.dropzone { border-color: var(--drop-line); background: var(--drop-bg); }
+.change-file-button { border-color: var(--change-line); }
+.change-file-button:hover { background: var(--change-hover); }
+.remove-file-button { border-color: var(--remove-line); background: var(--remove-bg); color: var(--remove-ink); }
+.remove-file-button:hover { border-color: var(--remove-ink); background: var(--remove-hover); }
+.sample-button { background: var(--sample-bg); }
+.preset { background: var(--chip-bg); }
+.hq-filter { border-color: var(--hq-line); }
+.hq-filter-heading span, .hq-filter small { color: var(--hq-muted); }
+.hq-filter-buttons button { border-color: var(--hq-btn-line); background: var(--hq-btn-bg); color: var(--hq-btn-ink); }
+.hq-filter-buttons button span { color: var(--hq-count); }
+.hq-filter-buttons button.active span { color: #e9e4ff; }
+.selection-actions button { color: var(--link-muted); }
+.column-meta { color: var(--meta); }
+.column-list { scrollbar-color: var(--scroll-thumb) transparent; }
+.column-row { border-bottom-color: var(--row-line); }
+.checkmark { border-color: var(--check-line); }
+.column-row input:checked + .checkmark { box-shadow: inset 0 0 0 3px var(--surface); }
+.column-row input:focus-visible + .checkmark { outline: 2px solid var(--blue); outline-offset: 2px; }
+.field-tag { color: var(--tag); }
+.summary-card { background: var(--summary-bg); }
+.summary-list div { color: var(--summary-ink); }
+.summary-list .more { color: var(--purple); }
+.summary-list .summary-empty { color: var(--summary-empty); }
+.filename-label input { border-color: var(--field-line); background: var(--field-bg); }
+.secondary-exports button { border-color: var(--field-line); background: var(--surface); }
+.table-wrap { background: var(--surface); }
+th, td { border-right-color: var(--table-line); border-bottom-color: var(--table-line); }
+th { background: var(--th-bg); color: var(--th-ink); }
+td { color: var(--td-ink); }
+tbody tr:nth-child(even) { background: var(--row-alt); }
+.null-value { color: var(--null); }
+.empty-preview { border-color: var(--empty-line); }
+.recipe { width: min(1180px, 92vw); margin: 0 auto 18px; display: grid; grid-template-columns: 1.3fr 1fr; border: 1px solid var(--line); background: var(--surface); border-radius: 18px; overflow: hidden; box-shadow: 0 18px 55px #10182814; }
+.recipe.dragging { border-color: var(--purple); box-shadow: 0 0 0 4px var(--purple-soft); }
+.recipe-intro { padding: 28px 30px; border-right: 1px solid var(--line); }
+.recipe-intro h2 { margin: 0 0 10px; font-size: 27px; font-weight: 800; line-height: 1.1; letter-spacing: -.035em; }
+.recipe-intro p { max-width: 58ch; margin: 0 0 18px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.recipe-columns { display: flex; flex-wrap: wrap; gap: 6px; }
+.recipe-columns code { padding: 6px 8px; border: 1px solid var(--change-line); border-radius: 6px; background: var(--blue-soft); color: var(--blue); font: 10px/1 monospace; }
+.recipe-action { display: flex; flex-direction: column; justify-content: center; gap: 11px; padding: 28px 30px; background: var(--summary-bg); }
+.recipe-count strong { display: block; color: var(--purple); font-size: 54px; line-height: .9; letter-spacing: -.05em; }
+.recipe-count span { display: block; margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.4; }
+.recipe-buttons { display: grid; grid-template-columns: 1.3fr 1fr; gap: 8px; }
+.recipe-primary { justify-content: center; }
+.recipe-secondary { min-height: 48px; border: 1px solid var(--field-line); border-radius: 9px; background: var(--surface); color: var(--blue); font-size: 12px; font-weight: 700; cursor: pointer; }
+.recipe-secondary:not(:disabled):hover { border-color: var(--purple); background: var(--purple-soft); color: var(--purple); }
+.recipe-secondary:disabled { cursor: not-allowed; opacity: .38; }
+.recipe-file { color: var(--muted); font: 10px/1.3 monospace; word-break: break-all; }
+.recipe-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 11px; color: var(--muted); }
+.recipe-link { padding: 0; border: 0; background: none; color: var(--link-muted); font-size: 11px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.recipe-hint { color: var(--muted); font-size: 11px; text-align: center; }
+.recipe-state strong { display: block; margin-bottom: 6px; font-size: 15px; }
+.recipe-state span { color: var(--muted); font-size: 12px; word-break: break-all; }
+.recipe-warning { padding: 10px 12px; border-radius: 8px; background: var(--err-bg); color: var(--err-ink); font-size: 12px; line-height: 1.45; }
+.recipe-preview { grid-column: 1 / -1; border-top: 1px solid var(--line); overflow-x: auto; }
+.recipe-preview th:last-child, .recipe-preview td:last-child { border-right: 0; }
+.recipe-preview tbody tr:last-child td { border-bottom: 0; }
+.recipe button:focus-visible { outline: 3px solid #1769f64d; outline-offset: 2px; }
+@media (max-width: 760px) {
+  .recipe { grid-template-columns: 1fr; }
+  .recipe-intro { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 620px) {
+  .recipe { width: calc(100% - 24px); }
+  .recipe-intro, .recipe-action { padding: 22px 20px; }
+  .recipe-buttons { grid-template-columns: 1fr; }
+}
+.my-presets { margin: -4px 0 16px; padding-top: 13px; border-top: 1px dashed var(--line); }
+.my-presets-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 9px; }
+.my-presets-heading strong { font-size: 11px; }
+.my-presets-heading span { color: var(--muted); font: 9px/1.2 monospace; }
+.my-presets .saved-row { margin-bottom: 9px; }
+.saved-preset { display: inline-flex; align-items: stretch; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; background: var(--chip-bg, #fff); }
+.saved-preset .preset { border: 0; border-radius: 0; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.saved-preset.active { border-color: var(--blue); }
+.saved-remove { border: 0; border-left: 1px solid var(--line); background: transparent; color: var(--muted); padding: 0 9px; font-size: 14px; line-height: 1; cursor: pointer; }
+.saved-preset.active .saved-remove { border-left-color: #ffffff55; background: var(--blue); color: #fff; }
+.saved-remove:hover, .saved-preset.active .saved-remove:hover { background: #fff3f5; color: #b4233c; }
+.save-preset { border: 1px dashed var(--field-line, #cfd7e4); border-radius: 7px; background: transparent; color: var(--blue); padding: 8px 10px; font-size: 11px; font-weight: 700; cursor: pointer; }
+.save-preset:not(:disabled):hover { border-style: solid; border-color: var(--blue); background: var(--blue-soft); }
+.save-preset:disabled { cursor: not-allowed; opacity: .45; }
+.save-preset-form { display: grid; grid-template-columns: 1fr auto auto; gap: 6px; }
+.save-preset-form input { min-width: 0; height: 34px; border: 1px solid var(--field-line, #cfd7e4); border-radius: 7px; background: var(--surface); color: var(--ink); padding: 0 10px; font-size: 12px; outline: 0; }
+.save-preset-form input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px #1769f61a; }
+.save-preset-form button { height: 34px; border-radius: 7px; padding: 0 12px; font-size: 11px; font-weight: 700; cursor: pointer; }
+.save-preset-form .confirm { border: 0; background: var(--blue); color: #fff; }
+.save-preset-form .confirm:not(:disabled):hover { background: var(--purple); }
+.save-preset-form .confirm:disabled { cursor: not-allowed; opacity: .4; }
+.save-preset-form .cancel { border: 1px solid var(--line); background: transparent; color: var(--muted); }
+.save-preset-panel small { display: block; margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+.my-presets-empty, .my-presets-undo { margin: 0 0 9px; color: var(--muted); font-size: 10px; line-height: 1.45; }
+.my-presets-undo button { border: 0; background: none; padding: 0; color: var(--blue); font-size: 10px; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.my-presets button:focus-visible { outline: 3px solid #1769f64d; outline-offset: 2px; }
+@media (max-width: 620px) {
+  .save-preset-form { grid-template-columns: 1fr 1fr; }
+  .save-preset-form input { grid-column: 1 / -1; }
+}
+.summary-list .summary-sort { color: var(--muted); font-family: Arial, sans-serif; white-space: normal; }
+.upload-strip { width: min(1180px, 92vw); margin: 0 auto 18px; padding: 24px 26px 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: 0 18px 55px #10182814; }
+.upload-strip .step-label { margin-bottom: 16px; }
+.upload-body { display: grid; grid-template-columns: 1fr 270px; gap: 20px; align-items: stretch; }
+.upload-strip .dropzone { min-height: 150px; flex-direction: row; justify-content: flex-start; gap: 20px; padding: 24px 28px; text-align: left; }
+.upload-strip .dropzone:hover { transform: none; }
+.upload-strip .dropzone.dragging { transform: none; }
+.upload-strip .dropzone.loaded { min-height: 110px; }
+.upload-strip .dropzone .upload-icon { flex: none; margin: 0; }
+.dropzone-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.dropzone-text strong { font-size: 17px; line-height: 1.25; overflow-wrap: anywhere; }
+.upload-strip .dropzone-text small { margin: 0; font-size: 12px; line-height: 1.45; }
+.upload-side { display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.upload-side .file-actions, .upload-side .sample-button { margin-top: 0; }
+.upload-side .upload-facts { margin-top: 14px; }
+.recipe.waiting .recipe-intro h2 { color: var(--ink); }
+.recipe.waiting .recipe-action { opacity: .9; }
+.path-divider { width: min(1180px, 92vw); margin: 26px auto 16px; display: flex; align-items: center; gap: 14px; color: var(--muted); font: 700 10px/1 monospace; letter-spacing: .09em; text-transform: uppercase; }
+.path-divider::before, .path-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.workspace { grid-template-columns: 1.45fr .8fr; }
+@media (max-width: 900px) {
+  .upload-body { grid-template-columns: 1fr; }
+  .workspace { grid-template-columns: 1fr; }
+  .workspace .selector-card { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 620px) {
+  .upload-strip { width: calc(100% - 24px); padding: 20px 18px; }
+  .upload-strip .dropzone { min-height: 120px; padding: 20px; gap: 14px; }
+  .path-divider { width: calc(100% - 24px); }
+}
+.save-alert { margin: 10px 0 0; padding: 10px 12px; border: 1px solid #cf5b46; border-radius: 8px; background: var(--err-bg, #fff0ec); color: var(--err-ink, #713025); font-size: 11px; line-height: 1.45; text-align: left; }
+.save-alert strong { display: block; margin-bottom: 3px; font-size: 12px; }
+.save-alert.subtle { border-color: #e8c9a0; background: #fff8ec; color: #6b4a1f; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .save-alert.subtle { border-color: #6b5530; background: #2a2114; color: #f1d9b0; } }
+:root[data-theme="dark"] .save-alert.subtle { border-color: #6b5530; background: #2a2114; color: #f1d9b0; }
+.filename-label input { line-height: 1.5; }
+.copy-button { min-height: 36px; border: 1px dashed var(--field-line, #cfd7e4); border-radius: 8px; background: transparent; color: var(--blue); font-size: 11px; font-weight: 700; cursor: pointer; }
+.copy-button:hover { border-style: solid; border-color: var(--purple); background: var(--purple-soft); color: var(--purple); }
+.copy-status { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; text-align: left; }
+.copy-status.ok { color: #1f7a4d; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .copy-status.ok { color: #7ee2ae; } }
+:root[data-theme="dark"] .copy-status.ok { color: #7ee2ae; }
+.manual-copy { width: 100%; height: 120px; margin-top: 8px; padding: 8px; border: 1px solid var(--field-line, #cfd7e4); border-radius: 7px; background: var(--surface); color: var(--ink); font: 10px/1.35 monospace; white-space: pre; resize: vertical; }
+.copy-button:focus-visible, .secondary-exports button:focus-visible { outline: 3px solid #1769f64d; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .dropzone, .dropzone:hover, .dropzone.dragging { transition: none; transform: none; }
+  .dropzone.processing .upload-icon { animation: none; }
+}
+
+</style>
+</head>
+<body class="antialiased">
+<div id="root"></div>
+<noscript><p style="padding:24px;font-family:Arial,sans-serif">DealSlice needs JavaScript to read and export your data pull.</p></noscript>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+(function () {
+  if (typeof React === "undefined" || typeof ReactDOM === "undefined") {
+    document.getElementById("root").innerHTML = '<p style="max-width:560px;margin:80px auto;padding:0 24px;font-family:Arial,sans-serif;line-height:1.5">DealSlice couldn\u2019t load its interface library. Check your connection and refresh the page.</p>';
+    return;
+  }
+const { useEffect, useMemo, useRef, useState } = React;
+const schemaColumns = [
+    "deal_target", "target_id", "deal_id", "hq", "suitors_bidders",
+    "id", "linked_asset_id", "asset", "updated_at", "type", "deal_status", "announcement_date_month", "announcement_date_year",
+    "publication_date", "headquarters_country_code", "region", "sector", "subsector", "currency", "gain_pro_url",
+    "latest_deal_stage.type", "latest_deal_stage.date", "launch_date", "nbo_deadline", "bo_deadline",
+    "bidders", "bidders.name_and_stage", "bidders.name", "bidders.type", "bidders.stage", "bidders.leading_party", "bidders.reason",
+    "bidders.share.value", "bidders.share.confidence", "bidders.share_pct.value", "bidders.share_pct.confidence",
+    "buyers", "buyers.name_and_share", "buyers.name", "buyers.type", "buyers.stage", "buyers.leading_party", "buyers.reason",
+    "sellers", "sellers.name_and_share", "sellers.name", "sellers.type", "sellers.stage", "sellers.leading_party", "sellers.reason",
+    "advisors", "advisors.name_and_role", "advisors.sell_side_ma", "advisors.buy_side_ma", "advisors.sell_side_legal",
+    "advisors.buy_side_legal", "advisors.sell_side_other", "advisors.buy_side_other", "advisors.side_unknown", "advisors.name", "advisors.party", "advisors.advisory_activities", "advisors.id", "advisors.url",
+    "sources", "sources.publication_month", "sources.publication_year", "sources.title", "sources.url", "sources.used_for",
+    "revenue", "revenue_eur", "revenue_year", "ebit", "ebit_eur", "ebit_year", "ebitda", "ebitda_eur",
+    "ebitda_year", "equity", "equity_eur", "equity_year", "ev", "ev_eur", "ev_year", "ev_ebit_multiple",
+    "ev_ebitda_multiple", "ev_revenue_multiple", "total_assets", "total_assets_eur", "total_assets_year", "fte", "fte_year",
+    "funding_round_type", "funding_round_amount_raised", "funding_round_amount_raised_eur",
+    "funding_round_pre_money_valuation", "funding_round_pre_money_valuation_eur",
+    "funding_round_post_money_valuation", "funding_round_post_money_valuation_eur",
+    "intelligence_entries.date", "intelligence_entries.text",
+];
+const overviewKeys = new Set([
+    "id", "asset", "type", "deal_status", "announcement_date_month", "announcement_date_year", "publication_date",
+    "headquarters_country_code", "sector", "subsector", "currency", "gain_pro_url", "linked_asset_id",
+]);
+const sourceStandalone = new Set(["publication_month", "publication_year", "title", "url", "used_for"]);
+const nainaFieldPriority = [
+    ["deal_target", "asset", "target", "target_name", "asset_name", "company_name", "name"],
+    ["target_id", "linked_asset_id", "target_asset_id", "asset_id"],
+    ["deal_id", "id"],
+    ["hq", "headquarters_country_code", "headquarters_country", "headquarters", "headquarters_region", "headquarters_formatted_address", "region"],
+    ["sector"],
+    ["suitors_bidders", "bidders", "bidders.name", "suitors", "suitors.name", "buyers", "buyers.name"],
+];
+function normalizePresetColumn(column) {
+    return column.trim().toLowerCase().replace(/^#/, "").replaceAll(" ", "_").replaceAll("-", "_");
+}
+const hqColumnPriority = [
+    "hq",
+    "headquarters_country_code",
+    "headquarters.country_code",
+    "headquarters_country",
+    "headquarters.country",
+    "headquarters",
+    "operational_hq_country_code",
+    "headquarters_region",
+    "headquarters.region",
+    "headquarters_formatted_address",
+    "headquarters.formatted_address",
+];
+const europeanCodes = new Set([
+    "AD", "AL", "AT", "BA", "BE", "BG", "BY", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GR",
+    "HR", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT",
+    "RO", "RS", "SE", "SI", "SK", "SM", "UA", "VA", "XK",
+]);
+const europeanNames = [
+    "albania", "andorra", "austria", "belarus", "belgium", "bosnia", "bulgaria", "croatia", "cyprus", "czech", "denmark",
+    "estonia", "finland", "france", "germany", "greece", "hungary", "iceland", "ireland", "italy", "kosovo", "latvia",
+    "liechtenstein", "lithuania", "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "north macedonia",
+    "norway", "poland", "portugal", "romania", "san marino", "serbia", "slovakia", "slovenia", "spain", "sweden",
+    "switzerland", "ukraine", "vatican", "europe", "dach", "benelux", "nordics", "cee", "southern europe",
+];
+function classifyHq(value) {
+    if (value === null || String(value).trim() === "")
+        return "Unknown";
+    const raw = String(value).trim();
+    const upper = raw.toUpperCase().replaceAll(".", "");
+    const lower = raw.toLowerCase();
+    if (["GB", "GBR", "UK", "UNITED KINGDOM"].includes(upper) || /\b(united kingdom|england|scotland|wales|northern ireland)\b/i.test(raw))
+        return "UK";
+    if (["US", "USA", "UNITED STATES", "UNITED STATES OF AMERICA"].includes(upper) || /\b(united states|usa)\b/i.test(raw))
+        return "US";
+    if (europeanCodes.has(upper) || europeanNames.some((name) => lower === name || lower.includes(`, ${name}`)))
+        return "Europe";
+    return "Other";
+}
+const nainaHeaderNames = ["#deal_target", "target_id", "deal_id", "hq", "sector", "suitors_bidders"];
+function nainaSelection(allColumns) {
+    const normalizedColumns = allColumns.map(normalizePresetColumn);
+    const picked = [];
+    nainaFieldPriority.forEach((aliases, index) => {
+        const alias = aliases.find((item) => normalizedColumns.includes(item));
+        if (!alias)
+            return;
+        const column = allColumns[normalizedColumns.indexOf(alias)];
+        if (!picked.some(([existing]) => existing === column))
+            picked.push([column, nainaHeaderNames[index]]);
+    });
+    return picked;
+}
+function matchesNaina(column, allColumns) {
+    const normalizedColumns = allColumns.map(normalizePresetColumn);
+    const selectedKeys = nainaFieldPriority
+        .map((aliases) => aliases.find((alias) => normalizedColumns.includes(alias)))
+        .filter((key) => Boolean(key));
+    return selectedKeys.includes(normalizePresetColumn(column));
+}
+function matchesRahul(column, allColumns) {
+    const key = normalizePresetColumn(column);
+    const leaf = key.split(".").at(-1) ?? key;
+    if (["id", "deal_id"].includes(key) || ["linked_asset_id", "target_asset_id", "asset_id"].includes(key))
+        return true;
+    if (["asset", "target", "target_name", "asset_name", "company_name"].includes(key))
+        return true;
+    if (key === "name"
+        && !allColumns.some((item) => /^(asset|target|target_name|asset_name|company_name)$/i.test(item.trim())))
+        return true;
+    if (/(^|\.)(updated_at|last_updated|last_updated_at|last_updated_date|date_last_updated|modified_at)$/.test(key))
+        return true;
+    if (["sector", "subsector", "region", "hq", "headquarters", "headquarters_country", "headquarters_region", "headquarters_country_code"].includes(key) || ["sector", "subsector", "region"].includes(leaf))
+        return true;
+    if (/(^|\.)(revenue|ebitda)(_|\.|$)/.test(key))
+        return true;
+    if (/(^|\.)(ev|enterprise_value|eqv|equity|equity_value)(_|\.|$)/.test(key)
+        && !/(multiple|margin)/.test(key))
+        return true;
+    if (/advis[oe]rs?/i.test(key))
+        return true;
+    if (/(^|\.)(bidders?|buyers?|suitors?)(\.|$)/i.test(key))
+        return true;
+    if (/(^|\.)(launch_date|nbo_deadline|bo_deadline|bidder_stage|suitor_stage)$/.test(key))
+        return true;
+    if (key === "stage" || /(^|\.)latest_deal_stage(\.|$)/.test(key))
+        return true;
+    return false;
+}
+const presets = [
+    {
+        id: "naina",
+        label: "Naina",
+        hint: "Naina's six recurring target, deal, HQ, sector and bidder columns",
+        matches: matchesNaina,
+    },
+    {
+        id: "rahul",
+        label: "Rahul",
+        hint: "Rahul's recurring deal, target, financial, advisor, timeline and bidder columns",
+        matches: matchesRahul,
+    },
+    {
+        id: "overview",
+        label: "Deal overview",
+        hint: "Core deal and target fields",
+        matches: (column) => overviewKeys.has(column.toLowerCase()),
+    },
+    {
+        id: "timeline",
+        label: "Timeline",
+        hint: "Launch, NBO, BO, deadlines and stages",
+        matches: (column) => /(announcement|launch|deadline|stage|preparation|non.?binding|binding.?offers|completed)/i.test(column),
+    },
+    {
+        id: "bidders",
+        label: "Bidders",
+        hint: "All bidder and buyer fields",
+        matches: (column) => /(^|\.)(bidders?|buyers?|suitors?)(\.|$)/i.test(column),
+    },
+    {
+        id: "advisors",
+        label: "Advisors",
+        hint: "All advisors, roles and activities",
+        matches: (column, allColumns) => /advis[oe]rs?/i.test(column) || (!allColumns.some((item) => /advis[oe]rs?/i.test(item)) && /^(name|party|advisory_activities|aliases|founders|headquarters_|year_founded|deals\.)/i.test(column)),
+    },
+    {
+        id: "sources",
+        label: "Sources",
+        hint: "Titles, URLs, dates and usage",
+        matches: (column, allColumns) => /(^|\.)(sources?)(\.|$)/i.test(column) || (!allColumns.some((item) => /(^|\.)(sources?)(\.|$)/i.test(item)) && sourceStandalone.has(column.toLowerCase())),
+    },
+    {
+        id: "financials",
+        label: "Financials",
+        hint: "Revenue, valuation and operating metrics",
+        matches: (column) => /(^|\.)(revenue|ebit|ebitda|equity|ev($|_)|total_assets|fte|funding_round)/i.test(column),
+    },
+];
+const recipeCollator = new Intl.Collator("en");
+const liveDealsRecipe = {
+    id: "live-deals-all-geographies",
+    title: "Live deals, all geographies",
+    fileStem: "live_deals_all_geographies",
+    headers: ["#deal_target", "target_id", "deal_id", "hq", "sector", "suitors_bidders"],
+    fields: {
+        status: ["deal_status", "status"],
+        target: ["asset", "deal_target", "target", "target_name", "asset_name"],
+        targetId: ["linked_asset_id", "target_id", "target_asset_id"],
+        dealId: ["id", "deal_id"],
+        hq: ["headquarters_country_code", "hq"],
+        sector: ["sector"],
+        bidders: ["bidders", "suitors_bidders", "suitors"],
+    },
+    required: { status: "deal status", target: "asset", dealId: "deal ID" },
+};
+function resolveRecipeKeys(recordKeys, fields) {
+    const normalized = recordKeys.map(normalizePresetColumn);
+    const keys = {};
+    Object.entries(fields).forEach(([field, aliases]) => {
+        const alias = aliases.find((item) => normalized.includes(item));
+        keys[field] = alias ? recordKeys[normalized.indexOf(alias)] : null;
+    });
+    return keys;
+}
+function recipeText(value) {
+    if (value === null || value === undefined)
+        return "";
+    if (typeof value === "object")
+        return JSON.stringify(value);
+    return String(value);
+}
+function bidderNames(value) {
+    if (value === null || value === undefined)
+        return "";
+    let list = value;
+    if (typeof value === "string") {
+        const trimmed = value.trim();
+        if (!trimmed)
+            return "";
+        if (!trimmed.startsWith("["))
+            return value;
+        try {
+            list = JSON.parse(trimmed);
+        }
+        catch {
+            return value;
+        }
+    }
+    if (!Array.isArray(list))
+        return recipeText(list);
+    return list
+        .map((item) => (item && typeof item === "object" ? item.name : item))
+        .filter((name) => name !== null && name !== undefined && String(name) !== "")
+        .map(String)
+        .join("; ");
+}
+function pullDate(label) {
+    const match = String(label).match(/(?:^|[^0-9])(20\d{6})(?=[^0-9]|$)/);
+    if (match)
+        return match[1];
+    const now = new Date();
+    return `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`;
+}
+function createRecipeCollector(recipe) {
+    let keys = null;
+    let scanned = 0;
+    const rows = [];
+    return {
+        prime(recordKeys) {
+            keys = resolveRecipeKeys(recordKeys, recipe.fields);
+        },
+        add(record) {
+            if (!keys)
+                keys = resolveRecipeKeys(Object.keys(record), recipe.fields);
+            scanned += 1;
+            if (!keys.status || !keys.target || !keys.dealId)
+                return;
+            if (recipeText(record[keys.status]).trim().toLowerCase() !== "live")
+                return;
+            rows.push([
+                recipeText(record[keys.target]),
+                keys.targetId ? recipeText(record[keys.targetId]) : "",
+                recipeText(record[keys.dealId]),
+                keys.hq ? recipeText(record[keys.hq]) : "",
+                keys.sector ? recipeText(record[keys.sector]) : "",
+                keys.bidders ? bidderNames(record[keys.bidders]) : "",
+            ]);
+        },
+        finish(label) {
+            const missing = Object.entries(recipe.required)
+                .filter(([field]) => !keys || !keys[field])
+                .map(([, name]) => name);
+            rows.sort((a, b) => recipeCollator.compare(a[0], b[0]) || (Number(b[2]) - Number(a[2])) || 0);
+            return {
+                rows,
+                scanned,
+                missing,
+                withSuitors: rows.filter((row) => row[5] !== "").length,
+                filename: `${pullDate(label)}_${recipe.fileStem}`,
+            };
+        },
+    };
+}
+function plainCsvCell(value) {
+    const text = guardFormula(value ?? "");
+    return /[",\r\n]/.test(text) || text.startsWith(" ") ? `"${text.replaceAll('"', '""')}"` : text;
+}
+function recipeCsv(recipe, rows) {
+    return [recipe.headers, ...rows].map((row) => row.map(plainCsvCell).join(",")).join("\n") + "\n";
+}
+const sampleData = [
+    {
+        deal_target: "Nordwell Analytics",
+        target_id: 77421,
+        deal_id: 18421,
+        hq: "DE",
+        suitors_bidders: "Aster Capital; Morrow Group",
+        id: 18421,
+        linked_asset_id: 77421,
+        asset: "Nordwell Analytics",
+        updated_at: "2026-08-20T09:30:00Z",
+        deal_status: "live",
+        announcement_date_month: 6,
+        announcement_date_year: 2026,
+        sector: "Technology",
+        region: "DACH",
+        headquarters_country_code: "DE",
+        latest_deal_stage: { type: "nonBindingOffers", date: "2026-08-18T00:00:00Z" },
+        launch_date: "2026-07-01T00:00:00Z",
+        nbo_deadline: "2026-09-15T00:00:00Z",
+        bo_deadline: "2026-11-02T00:00:00Z",
+        bidders: [
+            { name: "Aster Capital", type: "investor", stage: "nonBindingOffers", leading_party: true },
+            { name: "Morrow Group", type: "investor", stage: "launch", leading_party: false },
+        ],
+        advisors: [
+            { name: "Hawthorne Advisory", party: "seller", advisory_activities: ["M&A", "financial due diligence"] },
+            { name: "West & Field", party: "buyer", advisory_activities: ["legal"] },
+        ],
+        sources: [
+            { publication_month: 8, publication_year: 2026, title: "Nordwell process moves to NBOs", url: "https://example.com/nordwell", used_for: ["dealStage", "bidders"] },
+        ],
+        revenue_eur: 126000000,
+        revenue_year: 2025,
+        ebitda_eur: 22000000,
+        ebitda_year: 2025,
+        equity_eur: 280000000,
+        equity_year: 2026,
+    },
+    {
+        deal_target: "Clearwater Clinics",
+        target_id: 77456,
+        deal_id: 18456,
+        hq: "NL",
+        suitors_bidders: "Verdant Partners",
+        id: 18456,
+        linked_asset_id: 77456,
+        asset: "Clearwater Clinics",
+        updated_at: "2026-08-19T16:15:00Z",
+        deal_status: "completed",
+        announcement_date_month: 3,
+        announcement_date_year: 2026,
+        sector: "Healthcare",
+        region: "Benelux",
+        headquarters_country_code: "NL",
+        latest_deal_stage: { type: "completed", date: "2026-07-29T00:00:00Z" },
+        bidders: [{ name: "Verdant Partners", type: "investor", stage: "completed", leading_party: true }],
+        advisors: [{ name: "Ellison Partners", party: "seller", advisory_activities: ["M&A"] }],
+        sources: [{ publication_month: 7, publication_year: 2026, title: "Verdant closes Clearwater acquisition", url: "https://example.com/clearwater", used_for: ["dealBackground"] }],
+        ev_eur: 310000000,
+        ev_ebitda_multiple: 12.4,
+    },
+];
+const stageLabels = { preparation: "Preparation", launch: "Launch", nonbindingoffers: "NBO", bindingoffers: "BO", completed: "Completed" };
+const shareLabels = { majority: "majority", minority: "minority", sharedmajority: "shared majority" };
+const roleLabels = {
+    ma: "M&A", legal: "legal", ecm: "ECM", commercial: "commercial", tax: "tax", financial: "financial", pr: "PR",
+    ittechnology: "IT", environmentalsocial: "ESG", debt: "debt", operational: "operational", insurance: "insurance",
+    hr: "HR", fairnessopinion: "fairness opinion", other: "other", executivesearch: "executive search", forensics: "forensics",
+};
+function codeKey(value) {
+    return String(value ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+function isEntry(item) {
+    return Boolean(item) && typeof item === "object" && !Array.isArray(item);
+}
+function pickValue(item, ...names) {
+    for (const name of names) {
+        const value = item[name];
+        if (value !== undefined && value !== null && value !== "")
+            return value;
+    }
+    return null;
+}
+function innerValue(value) {
+    return isEntry(value) ? (value.value ?? null) : value;
+}
+function formatShare(value) {
+    const number = Number(value);
+    if (value === null || value === "" || !Number.isFinite(number))
+        return null;
+    const pct = Math.round((number <= 1 ? number * 100 : number) * 10) / 10;
+    return `${pct}%`;
+}
+function entryName(item) {
+    const name = pickValue(item, "name");
+    return name === null ? null : String(name).trim() || null;
+}
+function pairedParties(list, detail) {
+    return list.filter(isEntry).map((item) => {
+        const name = entryName(item);
+        if (!name)
+            return null;
+        const details = [];
+        if (detail === "stage") {
+            const stage = pickValue(item, "stage");
+            if (stage)
+                details.push(stageLabels[codeKey(stage)] ?? String(stage));
+            const leading = pickValue(item, "leadingParty", "leading_party");
+            if (leading === true || leading === "true")
+                details.push("leading");
+        }
+        else {
+            const share = innerValue(pickValue(item, "share"));
+            if (share)
+                details.push(shareLabels[codeKey(share)] ?? String(share));
+            const pct = formatShare(innerValue(pickValue(item, "sharePct", "share_pct")));
+            if (pct)
+                details.push(pct);
+        }
+        return details.length ? `${name} (${details.join(", ")})` : name;
+    }).filter(Boolean).join("; ");
+}
+function adviserColumns(column, list) {
+    const out = {};
+    const all = [];
+    const unknown = [];
+    const sides = { sell: { ma: [], legal: [], other: [] }, buy: { ma: [], legal: [], other: [] } };
+    list.filter(isEntry).forEach((item) => {
+        const name = entryName(item);
+        if (!name)
+            return;
+        const sideCode = codeKey(pickValue(item, "advised", "party", "side"));
+        const side = /^(sell|target|vendor)/.test(sideCode) ? "sell" : /^(buy|acquir|bidder|investor)/.test(sideCode) ? "buy" : null;
+        const rawRoles = pickValue(item, "advisedOn", "advisory_activities", "roles");
+        const roles = (Array.isArray(rawRoles) ? rawRoles : rawRoles ? String(rawRoles).split(/[,;|]/) : [])
+            .map((role) => String(role).trim())
+            .filter(Boolean);
+        const keys = roles.map(codeKey);
+        const labels = roles.map((role, index) => roleLabels[keys[index]] ?? role);
+        const sideLabel = side === "sell" ? "sell-side" : side === "buy" ? "buy-side" : "side unknown";
+        all.push(labels.length ? `${name} (${sideLabel}: ${labels.join(", ")})` : `${name} (${sideLabel})`);
+        if (!side) {
+            unknown.push(labels.length ? `${name} (${labels.join(", ")})` : name);
+            return;
+        }
+        const bucket = sides[side];
+        if (keys.includes("ma"))
+            bucket.ma.push(name);
+        if (keys.includes("legal"))
+            bucket.legal.push(name);
+        const others = labels.filter((_, index) => keys[index] !== "ma" && keys[index] !== "legal");
+        if (others.length)
+            bucket.other.push(`${name} (${others.join(", ")})`);
+        else if (!roles.length)
+            bucket.other.push(`${name} (role not given)`);
+    });
+    const put = (key, values) => {
+        const unique = [...new Set(values)];
+        if (unique.length)
+            out[`${column}.${key}`] = unique.join("; ");
+    };
+    put("name_and_role", all);
+    put("sell_side_ma", sides.sell.ma);
+    put("buy_side_ma", sides.buy.ma);
+    put("sell_side_legal", sides.sell.legal);
+    put("buy_side_legal", sides.buy.legal);
+    put("sell_side_other", sides.sell.other);
+    put("buy_side_other", sides.buy.other);
+    put("side_unknown", unknown);
+    return out;
+}
+function derivedColumns(column, value) {
+    if (!Array.isArray(value) || !value.some(isEntry))
+        return {};
+    const key = normalizePresetColumn(column);
+    if (key === "bidders" || key === "suitors") {
+        const paired = pairedParties(value, "stage");
+        return paired ? { [`${column}.name_and_stage`]: paired } : {};
+    }
+    if (key === "buyers" || key === "sellers") {
+        const paired = pairedParties(value, "share");
+        return paired ? { [`${column}.name_and_share`]: paired } : {};
+    }
+    if (key === "advisors" || key === "advisers")
+        return adviserColumns(column, value);
+    return {};
+}
+function displayValue(value) {
+    if (value === null || value === undefined)
+        return null;
+    if (typeof value === "string" || typeof value === "number" || typeof value === "boolean")
+        return value;
+    return JSON.stringify(value);
+}
+function flattenRecord(record) {
+    const out = {};
+    const visit = (value, path) => {
+        if (Array.isArray(value)) {
+            if (!value.length) {
+                return;
+            }
+            if (value.every((item) => item === null || typeof item !== "object")) {
+                out[path] = value.map((item) => item ?? "").join(", ");
+                return;
+            }
+            const entries = value.filter(isEntry).map((item) => flattenRecord(item));
+            const keys = [];
+            entries.forEach((entry) => Object.keys(entry).forEach((key) => { if (!keys.includes(key)) keys.push(key); }));
+            const missing = (item) => item === null || item === undefined || item === "";
+            keys.forEach((key) => {
+                const values = entries.map((entry) => entry[key]);
+                if (values.every(missing))
+                    return;
+                out[`${path}.${key}`] = entries.length === 1
+                    ? String(values[0])
+                    : values.map((item) => (missing(item) ? "\u2013" : String(item))).join("; ");
+            });
+            if (!keys.length)
+                out[path] = JSON.stringify(value);
+            return;
+        }
+        if (value && typeof value === "object") {
+            Object.entries(value).forEach(([key, nestedValue]) => visit(nestedValue, path ? `${path}.${key}` : key));
+            return;
+        }
+        if (path)
+            out[path] = displayValue(value);
+    };
+    Object.entries(record).forEach(([key, value]) => {
+        Object.assign(out, derivedColumns(key, value));
+        visit(value, key);
+    });
+    return out;
+}
+function expandEmbeddedJsonRecord(record, expandedFields) {
+    const out = {};
+    Object.entries(record).forEach(([column, value]) => {
+        if (typeof value !== "string") {
+            out[column] = value;
+            return;
+        }
+        const trimmed = value.trim();
+        if (!/^(?:\[|\{)/.test(trimmed)) {
+            out[column] = value;
+            return;
+        }
+        try {
+            const parsed = JSON.parse(trimmed);
+            if (parsed === null || typeof parsed !== "object") {
+                out[column] = value;
+                return;
+            }
+            Object.assign(out, flattenRecord({ [column]: parsed }));
+            expandedFields.add(column);
+        }
+        catch {
+            out[column] = value;
+        }
+    });
+    return out;
+}
+function chooseRows(raw) {
+    if (Array.isArray(raw))
+        return raw.filter((item) => item && typeof item === "object");
+    if (!raw || typeof raw !== "object")
+        throw new Error("The JSON file must contain records.");
+    const object = raw;
+    for (const key of ["data", "results", "items", "deals", "advisors", "sources"]) {
+        if (Array.isArray(object[key]))
+            return chooseRows(object[key]);
+    }
+    const firstArray = Object.values(object).find(Array.isArray);
+    if (firstArray)
+        return chooseRows(firstArray);
+    return [object];
+}
+async function parseDelimitedStream(source, onRecord) {
+    if (typeof TextDecoderStream === "undefined") {
+        throw new Error("This browser cannot stream large data pulls. Please use a current version of Chrome or Edge.");
+    }
+    const reader = source.pipeThrough(new TextDecoderStream()).getReader();
+    let initial = "";
+    while (!/[\r\n]/.test(initial)) {
+        const next = await reader.read();
+        if (next.done)
+            break;
+        initial += next.value;
+        if (initial.length > 1024 * 1024)
+            break;
+    }
+    const firstLine = initial.split(/\r?\n/, 1)[0] ?? "";
+    const candidates = [",", "\t", ";"];
+    const delimiter = candidates.sort((a, b) => firstLine.split(b).length - firstLine.split(a).length)[0];
+    const rows = [];
+    const expandedFields = new Set();
+    let headers = null;
+    let row = [];
+    let cell = "";
+    let quoted = false;
+    let cellStarted = false;
+    let pending = "";
+    const commitRow = () => {
+        if (!row.some((item) => item.trim() !== ""))
+            return;
+        if (!headers) {
+            const used = new Map();
+            headers = row.map((header, index) => {
+                const base = header.replace(/^\uFEFF/, "").trim() || `column_${index + 1}`;
+                const count = used.get(base) ?? 0;
+                used.set(base, count + 1);
+                return count ? `${base}_${count + 1}` : base;
+            });
+            return;
+        }
+        const record = Object.fromEntries(headers.map((header, index) => [header, row[index] ?? null]));
+        if (onRecord)
+            onRecord(record);
+        rows.push(expandEmbeddedJsonRecord(record, expandedFields));
+    };
+    const processText = (chunk, final = false) => {
+        const text = pending + chunk;
+        let limit = text.length;
+        if (!final)
+            while (limit > 0 && text[limit - 1] === '"')
+                limit -= 1;
+        let segmentStart = 0;
+        for (let index = 0; index < limit; index += 1) {
+            const char = text[index];
+            const next = text[index + 1];
+            if (char === '"') {
+                // A quote only opens a quoted value at the very start of a cell; elsewhere (e.g. 5" screen) it is literal text.
+                if (!quoted && (cellStarted || index > segmentStart))
+                    continue;
+                cell += text.slice(segmentStart, index);
+                if (quoted && next === '"') {
+                    cell += '"';
+                    index += 1;
+                }
+                else {
+                    quoted = !quoted;
+                }
+                cellStarted = true;
+                segmentStart = index + 1;
+            }
+            else if (char === delimiter && !quoted) {
+                cell += text.slice(segmentStart, index);
+                row.push(cell);
+                cell = "";
+                cellStarted = false;
+                segmentStart = index + 1;
+            }
+            else if ((char === "\n" || char === "\r") && !quoted) {
+                cell += text.slice(segmentStart, index);
+                if (char === "\r" && next === "\n")
+                    index += 1;
+                row.push(cell);
+                commitRow();
+                row = [];
+                cell = "";
+                cellStarted = false;
+                segmentStart = index + 1;
+            }
+        }
+        if (limit > segmentStart)
+            cellStarted = true;
+        cell += text.slice(segmentStart, limit);
+        pending = text.slice(limit);
+    };
+    processText(initial);
+    while (true) {
+        const next = await reader.read();
+        if (next.done)
+            break;
+        processText(next.value);
+    }
+    processText("", true);
+    if (quoted)
+        throw new Error("The file contains an unfinished quoted value.");
+    row.push(cell);
+    commitRow();
+    if (!headers || !rows.length)
+        throw new Error("The file needs a header row and at least one data row.");
+    return { rows, expandedFields: [...expandedFields] };
+}
+function gunzipStream(file) {
+    if (typeof DecompressionStream === "undefined") {
+        throw new Error("This browser cannot open compressed CSV files. Please use a current version of Chrome or Edge.");
+    }
+    try {
+        return file.stream().pipeThrough(new DecompressionStream("gzip"));
+    }
+    catch {
+        throw new Error("The compressed file could not be opened. Please check that it is a valid CSV.GZ data pull.");
+    }
+}
+function getColumns(rows) {
+    const columns = [];
+    const seen = new Set();
+    rows.forEach((row) => Object.keys(row).forEach((column) => {
+        if (!seen.has(column)) {
+            seen.add(column);
+            columns.push(column);
+        }
+    }));
+    return columns;
+}
+function inferType(column, rows) {
+    const values = [];
+    for (let index = 0; index < rows.length && values.length < 1000; index += 1) {
+        const value = rows[index][column];
+        if (value !== null && value !== "")
+            values.push(value);
+    }
+    if (values.some((value) => typeof value === "string" && /^(?:\[|\{)/.test(value)))
+        return "NESTED";
+    if (values.every((value) => typeof value === "number"))
+        return "NUMBER";
+    if (values.every((value) => typeof value === "boolean"))
+        return "BOOLEAN";
+    if (values.some((value) => typeof value === "string" && /^\d{4}-\d{2}-\d{2}/.test(value)))
+        return "DATE";
+    if (values.some((value) => typeof value === "string" && value.includes("; ")))
+        return "LIST";
+    return "TEXT";
+}
+// Spreadsheets run cells starting with = + - @ (or tab/CR) as formulas; plain numbers like -12.5 or +44207 are left alone.
+function guardFormula(text) {
+    if (!/^[=+\-@\t\r]/.test(text) || /^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(text))
+        return text;
+    return `'${text}`;
+}
+// Numeric text (from CSV pulls) becomes a real number in Excel; codes with leading zeros like "007" stay text.
+function excelValue(value) {
+    if (typeof value === "string" && /^-?(0|[1-9]\d{0,14})(\.\d+)?$/.test(value))
+        return Number(value);
+    return value;
+}
+function csvCell(value) {
+    if (value === null)
+        return "";
+    return `"${guardFormula(String(value)).replaceAll('"', '""')}"`;
+}
+const inClaudeViewer = typeof window !== "undefined" && Boolean(window.claude) && typeof window.claude.use === "function";
+const downloadsReady = inClaudeViewer ? window.claude.use("downloads").catch(() => null) : Promise.resolve(null);
+const permissionsReady = inClaudeViewer ? window.claude.use("permissions").catch(() => null) : Promise.resolve(null);
+async function readDownloadPermission() {
+    const permissions = await permissionsReady;
+    if (!permissions)
+        return null;
+    try {
+        return await permissions.state("downloads");
+    }
+    catch {
+        return null;
+    }
+}
+function downloadBlockedMessage(state) {
+    if (state === "denied")
+        return "File downloads are switched off for you on DealSlice. Open the Permissions menu at the top of this Claude page and allow file downloads, or use Copy for Excel or Sheets instead.";
+    return "File downloads aren't turned on for your Claude account, so DealSlice can't save files here. Use Copy for Excel or Sheets instead and paste into a blank spreadsheet. To get downloads back, ask your Claude admin to enable file downloads.";
+}
+const copyCharLimit = 15000000;
+function spreadsheetText(headers, rows) {
+    const cell = (value) => {
+        const text = value === null || value === undefined ? "" : String(value).replace(/[\t\r\n]+/g, " ");
+        return guardFormula(text);
+    };
+    return [headers.map(cell).join("\t"), ...rows.map((row) => row.map(cell).join("\t"))].join("\n");
+}
+async function copyText(text) {
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+        }
+    }
+    catch {
+        // fall through to the older copy route
+    }
+    try {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.left = "-9999px";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        const ok = document.execCommand("copy");
+        area.remove();
+        return ok;
+    }
+    catch {
+        return false;
+    }
+}
+function anchorDownload(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = filename;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+async function saveFile(blob, filename) {
+    const downloads = await downloadsReady;
+    if (!downloads) {
+        if (inClaudeViewer)
+            throw new Error(downloadBlockedMessage(await readDownloadPermission()));
+        anchorDownload(blob, filename);
+        return "fallback";
+    }
+    try {
+        await downloads.save({ filename, data: blob });
+        return "saved";
+    }
+    catch (caught) {
+        const code = caught && caught.code;
+        if (code === "declined")
+            return "declined";
+        if (code === "rate_limited")
+            throw new Error("A save prompt is already open. Finish or close it, then try again.");
+        if (code === "too_large")
+            throw new Error("This file is too large to save here. Filter by HQ or select fewer columns, then try again.");
+        if (code === "extension_not_enabled")
+            throw new Error("This file type can't be saved in this view. Use Download clean CSV instead.");
+        if (code === "bad_request" || code === "rejected_extension" || code === "transform_error")
+            throw new Error(`The file couldn't be prepared (${code}). Try again, or send a screenshot of this message.`);
+        throw new Error(`${downloadBlockedMessage(await readDownloadPermission())}${code ? ` (${code})` : ""}`);
+    }
+}
+const savedPresetKey = "dealslice:saved-presets:v1";
+const savedPresetLimit = 50;
+function presetStorageAvailable() {
+    try {
+        const probe = `${savedPresetKey}:probe`;
+        window.localStorage.setItem(probe, "1");
+        window.localStorage.removeItem(probe);
+        return true;
+    }
+    catch {
+        return false;
+    }
+}
+function readSavedPresets() {
+    try {
+        const parsed = JSON.parse(window.localStorage.getItem(savedPresetKey) || "[]");
+        if (!Array.isArray(parsed))
+            return [];
+        return parsed.filter((item) => item && typeof item.id === "string" && typeof item.name === "string" && Array.isArray(item.columns))
+            .map((item) => ({
+            id: item.id,
+            name: item.name,
+            columns: item.columns.filter((column) => typeof column === "string"),
+            status: typeof item.status === "string" ? item.status : "all",
+            hq: Array.isArray(item.hq) ? item.hq.filter((region) => typeof region === "string") : [],
+            labels: item.labels && typeof item.labels === "object" && !Array.isArray(item.labels)
+                ? Object.fromEntries(Object.entries(item.labels).filter(([, label]) => typeof label === "string"))
+                : {},
+            sort: typeof item.sort === "string" ? item.sort : null,
+            savedAt: item.savedAt ?? null,
+        }));
+    }
+    catch {
+        return [];
+    }
+}
+function writeSavedPresets(items) {
+    try {
+        window.localStorage.setItem(savedPresetKey, JSON.stringify(items));
+        return true;
+    }
+    catch {
+        return false;
+    }
+}
+function mapPresetColumns(savedColumns, available) {
+    const normalized = available.map((column) => normalizePresetColumn(column));
+    const out = [];
+    savedColumns.forEach((name) => {
+        let match = available.includes(name) ? name : null;
+        if (!match) {
+            const index = normalized.indexOf(normalizePresetColumn(name));
+            if (index >= 0)
+                match = available[index];
+        }
+        if (match && !out.includes(match))
+            out.push(match);
+    });
+    return out;
+}
+function mapPresetExtras(preset, available) {
+    const pick = (name) => mapPresetColumns([name], available)[0] ?? null;
+    const labels = {};
+    Object.entries(preset.labels ?? {}).forEach(([name, label]) => {
+        const match = pick(name);
+        if (match)
+            labels[match] = label;
+    });
+    return { labels, sort: preset.sort ? pick(preset.sort) : null };
+}
+const statusNames = { all: "", live: "Live", completed: "Completed", other: "Other status" };
+function describeSavedPreset(preset) {
+    const parts = [`${preset.columns.length} column${preset.columns.length === 1 ? "" : "s"}`];
+    if (statusNames[preset.status])
+        parts.push(statusNames[preset.status]);
+    if (preset.hq.length)
+        parts.push(preset.hq.join(" + "));
+    if (preset.sort)
+        parts.push("sorted A to Z");
+    return parts.join(", ");
+}
+function cleanFilename(name) {
+    return String(name ?? "").replace(/[\\/:*?"<>|\u0000-\u001f]/g, "").replace(/\s+/g, " ");
+}
+function finalFilename(name) {
+    const cleaned = cleanFilename(name).trim().replace(/\.(csv|xlsx|xls)$/i, "").trim();
+    return cleaned || "deal-data";
+}
+function presetFilename(presetName, label) {
+    const name = cleanFilename(presetName).trim();
+    return name ? `${pullDate(label)}_${name}` : finalFilename(label);
+}
+function sanitizeFilename(name) {
+    return name.replace(/\.(csv|tsv|txt)\.gz$/i, "").replace(/\.[^.]+$/, "").replace(/[^a-z0-9_-]+/gi, "-").replace(/^-|-$/g, "") || "deal-data";
+}
+function Home() {
+    const [rows, setRows] = useState([]);
+    const [columns, setColumns] = useState(schemaColumns);
+    const [selected, setSelected] = useState(schemaColumns.filter((column) => overviewKeys.has(column)));
+    const [search, setSearch] = useState("");
+    const [task, setTask] = useState("");
+    const [activePreset, setActivePreset] = useState("overview");
+    const [filename, setFilename] = useState("deal-data");
+    const [fileLabel, setFileLabel] = useState("");
+    const [error, setError] = useState("");
+    const [errorTitle, setErrorTitle] = useState("Couldn’t load that file.");
+    const [dragging, setDragging] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [processingLabel, setProcessingLabel] = useState("");
+    const [notice, setNotice] = useState("Ready for your data pull");
+    const [conversionDetail, setConversionDetail] = useState("Nested JSON becomes clear CSV columns automatically.");
+    const [hqFilters, setHqFilters] = useState([]);
+    const [statusFilter, setStatusFilter] = useState("all");
+    const [columnLabels, setColumnLabels] = useState({});
+    const [sortColumn, setSortColumn] = useState(null);
+    const [savedPresets, setSavedPresets] = useState(() => readSavedPresets());
+    const [presetStorageOk] = useState(() => presetStorageAvailable());
+    const [savingPreset, setSavingPreset] = useState(false);
+    const [presetName, setPresetName] = useState("");
+    const [lastDeletedPreset, setLastDeletedPreset] = useState(null);
+    const presetNameRef = useRef(null);
+    const [recipeResult, setRecipeResult] = useState(null);
+    const [recipeNotice, setRecipeNotice] = useState("");
+    const [saveError, setSaveError] = useState(null);
+    const [copyState, setCopyState] = useState(null);
+    const [manualCopy, setManualCopy] = useState(null);
+    const manualCopyRef = useRef(null);
+    const [downloadStatus, setDownloadStatus] = useState("checking");
+    useEffect(() => {
+        let alive = true;
+        (async () => {
+            const downloads = await downloadsReady;
+            const state = await readDownloadPermission();
+            if (!alive)
+                return;
+            if (!inClaudeViewer)
+                setDownloadStatus("ok");
+            else if (!downloads)
+                setDownloadStatus(state === "denied" ? "denied" : "unavailable");
+            else
+                setDownloadStatus(state === "denied" ? "denied" : "ok");
+        })();
+        return () => { alive = false; };
+    }, []);
+    const inputRef = useRef(null);
+    const columnTypes = useMemo(() => (rows.length ? Object.fromEntries(columns.map((column) => [column, inferType(column, rows)])) : {}), [rows, columns]);
+    const filteredColumns = useMemo(() => columns.filter((column) => column.toLowerCase().includes(search.trim().toLowerCase())), [columns, search]);
+    const hqColumn = useMemo(() => {
+        const normalized = columns.map((column) => normalizePresetColumn(column));
+        const preferred = hqColumnPriority.find((candidate) => normalized.includes(candidate));
+        return preferred ? columns[normalized.indexOf(preferred)] : null;
+    }, [columns]);
+    const statusColumn = useMemo(() => {
+        const normalized = columns.map((column) => normalizePresetColumn(column));
+        const preferred = ["deal_status", "status"].find((candidate) => normalized.includes(candidate));
+        return preferred ? columns[normalized.indexOf(preferred)] : null;
+    }, [columns]);
+    const statusOf = (row) => {
+        const value = String(row[statusColumn] ?? "").trim().toLowerCase();
+        return value === "live" || value === "completed" ? value : "other";
+    };
+    const statusCounts = useMemo(() => {
+        const counts = { live: 0, completed: 0, other: 0 };
+        if (statusColumn)
+            rows.forEach((row) => { counts[statusOf(row)] += 1; });
+        return counts;
+    }, [rows, statusColumn]);
+    const statusRows = useMemo(() => {
+        if (!statusColumn || statusFilter === "all")
+            return rows;
+        return rows.filter((row) => statusOf(row) === statusFilter);
+    }, [rows, statusColumn, statusFilter]);
+    const hqCounts = useMemo(() => {
+        const counts = { US: 0, Europe: 0, UK: 0, Other: 0, Unknown: 0 };
+        if (hqColumn)
+            statusRows.forEach((row) => { counts[classifyHq(row[hqColumn] ?? null)] += 1; });
+        return counts;
+    }, [statusRows, hqColumn]);
+    const filteredRows = useMemo(() => {
+        if (!hqColumn || !hqFilters.length)
+            return statusRows;
+        return statusRows.filter((row) => hqFilters.includes(classifyHq(row[hqColumn] ?? null)));
+    }, [statusRows, hqColumn, hqFilters]);
+    const anyFilter = hqFilters.length > 0 || (Boolean(statusColumn) && statusFilter !== "all");
+    const idColumn = useMemo(() => {
+        const normalized = columns.map((column) => normalizePresetColumn(column));
+        const index = normalized.includes("id") ? normalized.indexOf("id") : normalized.indexOf("deal_id");
+        return index >= 0 ? columns[index] : null;
+    }, [columns]);
+    const activeSort = sortColumn && selected.includes(sortColumn) ? sortColumn : null;
+    const outputRows = useMemo(() => {
+        if (!activeSort)
+            return filteredRows;
+        const text = (value) => (value === null || value === undefined ? "" : String(value));
+        return [...filteredRows].sort((a, b) => recipeCollator.compare(text(a[activeSort]), text(b[activeSort]))
+            || (idColumn ? (Number(b[idColumn]) - Number(a[idColumn])) : 0)
+            || 0);
+    }, [filteredRows, activeSort, idColumn]);
+    const headerFor = (column) => columnLabels[column] || column;
+    const previewRows = useMemo(() => outputRows.slice(0, 5).map((row) => Object.fromEntries(selected.map((column) => [column, row[column] ?? null]))), [outputRows, selected]);
+    const applyData = (rawRows, label, alreadyFlat = false, conversion = "Ready for clean CSV export") => {
+        if (!rawRows.length)
+            throw new Error("No records were found in that file.");
+        const flattened = alreadyFlat ? rawRows : rawRows.map(flattenRecord);
+        const discovered = getColumns(flattened);
+        if (!discovered.length)
+            throw new Error("No columns were found in that file.");
+        setRows(flattened);
+        setColumns(discovered);
+        const savedActive = activePreset.startsWith("saved:") ? savedPresets.find((item) => `saved:${item.id}` === activePreset) : null;
+        const savedColumns = savedActive ? mapPresetColumns(savedActive.columns, discovered) : [];
+        const nainaPicked = activePreset === "naina" ? nainaSelection(discovered) : [];
+        if (savedActive && savedColumns.length) {
+            const extras = mapPresetExtras(savedActive, discovered);
+            setSelected(savedColumns);
+            setHqFilters(savedActive.hq);
+            setStatusFilter(savedActive.status);
+            setColumnLabels(extras.labels);
+            setSortColumn(extras.sort);
+        }
+        else if (nainaPicked.length) {
+            setSelected(nainaPicked.map(([column]) => column));
+            setColumnLabels(Object.fromEntries(nainaPicked));
+            setSortColumn(nainaPicked.find(([, label]) => label === "#deal_target")?.[0] ?? null);
+            setHqFilters([]);
+            setStatusFilter("live");
+        }
+        else {
+            setColumnLabels({});
+            setSortColumn(null);
+            const overviewPreset = presets.find((preset) => preset.id === "overview");
+            const overview = discovered.filter((column) => overviewPreset?.matches(column, discovered));
+            setSelected(overview.length ? overview : discovered.slice(0, Math.min(8, discovered.length)));
+            setActivePreset(overview.length ? "overview" : "custom");
+            setHqFilters([]);
+            setStatusFilter("all");
+        }
+        setFileLabel(label);
+        const overviewLabel = presets.find((preset) => preset.id === "overview")?.label ?? "Deal overview";
+        const hasOverview = discovered.some((column) => presets.find((preset) => preset.id === "overview")?.matches(column, discovered));
+        setFilename(savedActive && savedColumns.length
+            ? presetFilename(savedActive.name, label)
+            : nainaPicked.length
+                ? presetFilename(presets.find((preset) => preset.id === "naina")?.label ?? "Naina", label)
+                : hasOverview ? presetFilename(overviewLabel, label) : `${sanitizeFilename(label)}-clean-columns`);
+        setError("");
+        setConversionDetail(conversion);
+        setNotice(savedActive && savedColumns.length
+            ? `${flattened.length.toLocaleString()} rows · “${savedActive.name}” applied`
+            : `${flattened.length.toLocaleString()} rows · ${discovered.length.toLocaleString()} columns detected`);
+    };
+    const readFile = async (file) => {
+        if (!file || isProcessing)
+            return;
+        setIsProcessing(true);
+        setProcessingLabel(file.name);
+        setError("");
+        setErrorTitle("Couldn’t load that file.");
+        setNotice(file.name.toLowerCase().endsWith(".gz") ? "Decompressing and reading the data pull…" : "Reading the data pull…");
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 0));
+            const lowerName = file.name.toLowerCase();
+            const extension = lowerName.split(".").pop();
+            const collector = createRecipeCollector(liveDealsRecipe);
+            const collectAll = (records) => {
+                collector.prime(getColumns(records));
+                records.forEach((record) => collector.add(record));
+            };
+            if (extension === "json") {
+                const jsonRows = chooseRows(JSON.parse(await file.text()));
+                collectAll(jsonRows);
+                applyData(jsonRows, file.name, false, "JSON converted into separate, selectable CSV columns");
+            }
+            else if (extension === "csv" || extension === "tsv" || extension === "txt") {
+                const parsed = await parseDelimitedStream(file.stream(), collector.add);
+                const conversion = parsed.expandedFields.length
+                    ? `${parsed.expandedFields.length} JSON fields expanded into separate CSV columns`
+                    : "CSV columns are ready to select";
+                applyData(parsed.rows, file.name, true, conversion);
+            }
+            else if (extension === "gz") {
+                const parsed = await parseDelimitedStream(gunzipStream(file), collector.add);
+                const conversion = parsed.expandedFields.length
+                    ? `${parsed.expandedFields.length} JSON fields expanded into separate CSV columns`
+                    : "Compressed CSV opened and ready to select";
+                applyData(parsed.rows, file.name, true, conversion);
+            }
+            else if (extension === "xlsx" || extension === "xls") {
+                if (typeof XLSX === "undefined")
+                    throw new Error("The Excel library didn't load. Refresh the page, or upload a CSV instead.");
+                const workbook = XLSX.read(await file.arrayBuffer(), { type: "array", cellDates: true });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                const parsed = XLSX.utils.sheet_to_json(sheet, { defval: null, raw: false });
+                collectAll(parsed);
+                const expandedFields = new Set();
+                const expanded = parsed.map((record) => expandEmbeddedJsonRecord(record, expandedFields));
+                applyData(expanded, file.name, true, expandedFields.size
+                    ? `${expandedFields.size} JSON fields expanded into separate CSV columns`
+                    : "Excel columns are ready to select");
+            }
+            else {
+                throw new Error("Please upload a CSV, CSV.GZ, TSV, JSON, XLSX or XLS file.");
+            }
+            setRecipeResult(collector.finish(file.name));
+            setRecipeNotice("");
+        }
+        catch (caught) {
+            setError(caught instanceof Error ? caught.message : "That file could not be read.");
+        }
+        finally {
+            setIsProcessing(false);
+            setProcessingLabel("");
+            if (inputRef.current)
+                inputRef.current.value = "";
+        }
+    };
+    const onFileChange = (event) => readFile(event.target.files?.[0]);
+    const loadSample = () => {
+        const collector = createRecipeCollector(liveDealsRecipe);
+        collector.prime(getColumns(sampleData));
+        sampleData.forEach((record) => collector.add(record));
+        applyData(sampleData, "sample-deals.json");
+        setRecipeResult(collector.finish("sample-deals.json"));
+        setRecipeNotice("");
+    };
+    const onDrop = (event) => {
+        event.preventDefault();
+        setDragging(false);
+        if (isProcessing)
+            return;
+        setHqFilters([]);
+        readFile(event.dataTransfer.files?.[0]);
+    };
+    const removeFile = () => {
+        setRows([]);
+        setRecipeResult(null);
+        setRecipeNotice("");
+        setStatusFilter("all");
+        setHqFilters([]);
+        setColumns(schemaColumns);
+        setSelected(schemaColumns.filter((column) => overviewKeys.has(column)));
+        setSearch("");
+        setActivePreset("overview");
+        setFilename("deal-data");
+        setFileLabel("");
+        setError("");
+        setDragging(false);
+        setNotice("Ready for your data pull");
+        setConversionDetail("Nested JSON becomes clear CSV columns automatically.");
+        if (inputRef.current)
+            inputRef.current.value = "";
+    };
+    const applyPreset = (preset) => {
+        setFilename(presetFilename(preset.label, fileLabel));
+        if (preset.id === "naina") {
+            const picked = nainaSelection(columns);
+            setActivePreset("naina");
+            setSelected(picked.map(([column]) => column));
+            setColumnLabels(Object.fromEntries(picked));
+            setSortColumn(picked.find(([, label]) => label === "#deal_target")?.[0] ?? null);
+            if (statusColumn)
+                setStatusFilter("live");
+            setNotice(!rows.length
+                ? "Naina's view will be applied when you add a pull"
+                : picked.length ? `${picked.length} Naina columns · live deals · sorted A to Z` : "No Naina columns found in this file");
+            return;
+        }
+        setColumnLabels({});
+        setSortColumn(null);
+        const matches = columns.filter((column) => preset.matches(column, columns));
+        setActivePreset(preset.id);
+        setSelected(matches);
+        setNotice(matches.length ? `${matches.length} ${preset.label.toLowerCase()} columns selected` : `No ${preset.label.toLowerCase()} columns found in this file`);
+    };
+    const applySavedPreset = (preset) => {
+        const matches = mapPresetColumns(preset.columns, columns);
+        const extras = mapPresetExtras(preset, columns);
+        setActivePreset(`saved:${preset.id}`);
+        setFilename(presetFilename(preset.name, fileLabel));
+        setSelected(matches);
+        setColumnLabels(extras.labels);
+        setSortColumn(extras.sort);
+        setStatusFilter(preset.status);
+        setHqFilters(preset.hq);
+        const missing = preset.columns.length - matches.length;
+        if (!rows.length)
+            setNotice(`“${preset.name}” will be applied when you add a pull`);
+        else if (missing > 0)
+            setNotice(`“${preset.name}” applied · ${missing} column${missing === 1 ? " isn't" : "s aren't"} in this file`);
+        else
+            setNotice(`“${preset.name}” applied`);
+    };
+    const openPresetSave = () => {
+        setSavingPreset(true);
+        setLastDeletedPreset(null);
+        const current = activePreset.startsWith("saved:") ? savedPresets.find((item) => `saved:${item.id}` === activePreset) : null;
+        setPresetName(current?.name ?? "");
+        setTimeout(() => presetNameRef.current?.focus(), 0);
+    };
+    const cancelPresetSave = () => {
+        setSavingPreset(false);
+        setPresetName("");
+    };
+    const presetNameTaken = savedPresets.find((item) => item.name.toLowerCase() === presetName.trim().toLowerCase());
+    const savePreset = () => {
+        const name = presetName.trim().slice(0, 40);
+        if (!name || !selected.length)
+            return;
+        if (!presetNameTaken && savedPresets.length >= savedPresetLimit) {
+            setNotice(`You can keep up to ${savedPresetLimit} presets. Delete one to save another.`);
+            return;
+        }
+        const preset = {
+            id: presetNameTaken?.id ?? `p${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`,
+            name,
+            columns: [...selected],
+            status: statusColumn ? statusFilter : "all",
+            hq: hqColumn ? [...hqFilters] : [],
+            labels: Object.fromEntries(selected.filter((column) => columnLabels[column] && columnLabels[column] !== column).map((column) => [column, columnLabels[column]])),
+            sort: activeSort,
+            savedAt: new Date().toISOString(),
+        };
+        const next = presetNameTaken ? savedPresets.map((item) => (item.id === preset.id ? preset : item)) : [...savedPresets, preset];
+        if (!writeSavedPresets(next)) {
+            setNotice("This browser didn't allow the preset to be saved");
+            return;
+        }
+        setSavedPresets(next);
+        setActivePreset(`saved:${preset.id}`);
+        setFilename(presetFilename(name, fileLabel));
+        setSavingPreset(false);
+        setPresetName("");
+        setNotice(presetNameTaken ? `“${name}” updated` : `“${name}” saved`);
+    };
+    const deletePreset = (preset) => {
+        const next = savedPresets.filter((item) => item.id !== preset.id);
+        if (!writeSavedPresets(next)) {
+            setNotice("This browser didn't allow the preset to be deleted");
+            return;
+        }
+        setSavedPresets(next);
+        setLastDeletedPreset({ preset, index: savedPresets.findIndex((item) => item.id === preset.id) });
+        if (activePreset === `saved:${preset.id}`)
+            setActivePreset("custom");
+    };
+    const undoDeletePreset = () => {
+        if (!lastDeletedPreset)
+            return;
+        const next = [...savedPresets];
+        next.splice(Math.min(lastDeletedPreset.index, next.length), 0, lastDeletedPreset.preset);
+        if (!writeSavedPresets(next))
+            return;
+        setSavedPresets(next);
+        setLastDeletedPreset(null);
+    };
+    const toggleHqFilter = (region) => {
+        setHqFilters((current) => current.includes(region) ? current.filter((item) => item !== region) : [...current, region]);
+    };
+    const suggestColumns = () => {
+        const query = task.trim().toLowerCase();
+        if (!query)
+            return;
+        const signals = [
+            [/naina/, "naina"],
+            [/rahul/, "rahul"],
+            [/overview|summary|core|target|company|asset/, "overview"],
+            [/timeline|date|deadline|launch|nbo|non.?binding|\bbo\b|binding offer|stage|suitor/, "timeline"],
+            [/bidder|buyer|suitor/, "bidders"],
+            [/advisor|adviser|bank|legal counsel/, "advisors"],
+            [/source|citation|article|publication/, "sources"],
+            [/financial|revenue|ebit|ebitda|valuation|enterprise value|multiple|funding/, "financials"],
+        ];
+        const presetIds = signals.filter(([signal]) => signal.test(query)).map(([, id]) => id);
+        const directWords = query.split(/[^a-z0-9]+/).filter((word) => word.length > 2);
+        const matches = columns.filter((column) => {
+            const normalized = column.toLowerCase().replaceAll("_", " ").replaceAll(".", " ");
+            return directWords.some((word) => normalized.includes(word)) || presets.some((preset) => presetIds.includes(preset.id) && preset.matches(column, columns));
+        });
+        setSelected(matches);
+        setActivePreset("custom");
+        setNotice(matches.length ? `${matches.length} task-relevant columns suggested` : "No close column matches found — try a preset or choose manually");
+    };
+    const toggleColumn = (column) => {
+        setSelected((current) => current.includes(column) ? current.filter((item) => item !== column) : [...current, column]);
+        setActivePreset("custom");
+    };
+    const [isSaving, setIsSaving] = useState(false);
+    const finishSave = (result, label) => {
+        if (result === "saved")
+            setNotice(`${label} saved`);
+        else if (result === "declined")
+            setNotice("Download cancelled");
+    };
+    const failSave = (caught, where = "custom") => {
+        setSaveError({ where, message: caught instanceof Error ? caught.message : "The file could not be saved." });
+    };
+    const exportCsv = async () => {
+        if (isSaving)
+            return;
+        setIsSaving(true);
+        setError("");
+        setSaveError(null);
+        try {
+            const content = [selected.map((column) => csvCell(headerFor(column))).join(","), ...outputRows.map((row) => selected.map((column) => csvCell(row[column] ?? null)).join(","))].join("\r\n");
+            const blob = new Blob([`\uFEFF${content}`], { type: "text/csv;charset=utf-8" });
+            finishSave(await saveFile(blob, `${finalFilename(filename)}.csv`), "Clean CSV");
+        }
+        catch (caught) {
+            failSave(caught);
+        }
+        finally {
+            setIsSaving(false);
+        }
+    };
+    const exportExcel = async () => {
+        if (isSaving)
+            return;
+        setIsSaving(true);
+        setError("");
+        setSaveError(null);
+        try {
+            if (typeof XLSX === "undefined")
+                throw new Error("The Excel library didn't load. Refresh the page, or use Download clean CSV.");
+            const headers = selected.map(headerFor);
+            const selectedRows = outputRows.map((row) => selected.map((column) => excelValue(row[column] ?? null)));
+            const worksheet = XLSX.utils.aoa_to_sheet([headers, ...selectedRows]);
+            worksheet["!cols"] = headers.map((header) => ({ wch: Math.min(42, Math.max(12, header.length + 2)) }));
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Selected columns");
+            const bytes = XLSX.write(workbook, { bookType: "xlsx", type: "array", compression: true });
+            const blob = new Blob([bytes], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+            finishSave(await saveFile(blob, `${finalFilename(filename)}.xlsx`), "Excel file");
+        }
+        catch (caught) {
+            failSave(caught);
+        }
+        finally {
+            setIsSaving(false);
+        }
+    };
+    const recipeSaved = (result) => {
+        if (result === "saved")
+            setRecipeNotice("Saved");
+        else if (result === "declined")
+            setRecipeNotice("Download cancelled");
+        else if (result === "fallback")
+            setRecipeNotice("Downloaded");
+    };
+    const exportRecipeCsv = async () => {
+        if (isSaving || !recipeResult || !recipeResult.rows.length)
+            return;
+        setIsSaving(true);
+        setError("");
+        setSaveError(null);
+        setRecipeNotice("");
+        try {
+            const blob = new Blob([recipeCsv(liveDealsRecipe, recipeResult.rows)], { type: "text/csv;charset=utf-8" });
+            recipeSaved(await saveFile(blob, `${recipeResult.filename}.csv`));
+        }
+        catch (caught) {
+            failSave(caught, "recipe");
+        }
+        finally {
+            setIsSaving(false);
+        }
+    };
+    const exportRecipeExcel = async () => {
+        if (isSaving || !recipeResult || !recipeResult.rows.length)
+            return;
+        setIsSaving(true);
+        setError("");
+        setSaveError(null);
+        setRecipeNotice("");
+        try {
+            if (typeof XLSX === "undefined")
+                throw new Error("The Excel library didn't load. Refresh the page, or download the CSV instead.");
+            const sheetRows = recipeResult.rows.map((row) => [row[0], excelValue(row[1]), excelValue(row[2]), row[3], row[4], row[5]]);
+            const worksheet = XLSX.utils.aoa_to_sheet([liveDealsRecipe.headers, ...sheetRows]);
+            worksheet["!cols"] = [{ wch: 40 }, { wch: 12 }, { wch: 12 }, { wch: 6 }, { wch: 16 }, { wch: 60 }];
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Live deals");
+            const bytes = XLSX.write(workbook, { bookType: "xlsx", type: "array", compression: true });
+            const blob = new Blob([bytes], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+            recipeSaved(await saveFile(blob, `${recipeResult.filename}.xlsx`));
+        }
+        catch (caught) {
+            failSave(caught, "recipe");
+        }
+        finally {
+            setIsSaving(false);
+        }
+    };
+    const copyTable = async (where) => {
+        const isRecipe = where === "recipe";
+        const headers = isRecipe ? liveDealsRecipe.headers : selected.map(headerFor);
+        const body = isRecipe ? recipeResult.rows : outputRows.map((row) => selected.map((column) => row[column] ?? null));
+        setManualCopy(null);
+        setSaveError(null);
+        const text = spreadsheetText(headers, body);
+        if (text.length > copyCharLimit) {
+            setCopyState({ where, ok: false, message: "That's too much to copy in one go. Filter the rows or pick fewer columns, then try again." });
+            return;
+        }
+        const ok = await copyText(text);
+        if (ok) {
+            setCopyState({ where, ok: true, message: `Copied ${body.length.toLocaleString()} rows and ${headers.length} columns. Paste into cell A1 of a blank Excel or Google Sheets tab.` });
+        }
+        else {
+            setCopyState({ where, ok: false, message: "Your browser blocked automatic copying. The table is selected below: press Ctrl+C (Cmd+C on a Mac), then paste into a blank spreadsheet." });
+            setManualCopy({ where, text });
+            setTimeout(() => { manualCopyRef.current?.focus(); manualCopyRef.current?.select(); }, 0);
+        }
+    };
+    const copyBlock = (where) => React.createElement(React.Fragment, null,
+        copyState && copyState.where === where && React.createElement("p", { className: `copy-status ${copyState.ok ? "ok" : ""}`, role: "status" }, copyState.message),
+        manualCopy && manualCopy.where === where && React.createElement("textarea", { ref: manualCopyRef, className: "manual-copy", readOnly: true, value: manualCopy.text, "aria-label": "Table to copy", onFocus: (event) => event.target.select() }));
+    const recipeMissing = recipeResult && recipeResult.missing.length > 0;
+    const recipeReady = recipeResult && !recipeMissing && recipeResult.rows.length > 0;
+    const recipeAction = isProcessing
+        ? React.createElement("div", { className: "recipe-state", role: "status" },
+            React.createElement("strong", null, "Building the file\u2026"),
+            React.createElement("span", null, "It will be ready as soon as the pull has been read."))
+        : recipeReady
+            ? React.createElement(React.Fragment, null,
+                React.createElement("div", { className: "recipe-count" },
+                    React.createElement("strong", null, recipeResult.rows.length.toLocaleString()),
+                    React.createElement("span", null, "live deals from ", recipeResult.scanned.toLocaleString(), " in the pull, ", recipeResult.withSuitors.toLocaleString(), " with suitors")),
+                React.createElement("div", { className: "recipe-buttons" },
+                    React.createElement("button", { className: "export-button recipe-primary", disabled: isSaving, onClick: exportRecipeCsv }, "Download CSV"),
+                    React.createElement("button", { className: "recipe-secondary", disabled: isSaving, onClick: exportRecipeExcel }, "Download Excel")),
+                React.createElement("button", { className: "copy-button", onClick: () => copyTable("recipe") }, "Copy for Excel or Sheets"),
+                copyBlock("recipe"),
+                React.createElement("code", { className: "recipe-file" }, recipeResult.filename, ".csv / .xlsx"),
+                recipeNotice && React.createElement("div", { className: "recipe-foot", role: "status" }, recipeNotice),
+                saveError && saveError.where === "recipe" ? React.createElement("div", { className: "save-alert", role: "alert" },
+                        React.createElement("strong", null, "Couldn\u2019t download the file."),
+                        React.createElement("span", null, saveError.message)) : (downloadStatus === "denied" || downloadStatus === "unavailable") && React.createElement("div", { className: "save-alert subtle", role: "status" },
+                    React.createElement("strong", null, downloadStatus === "denied" ? "Downloads are switched off for you here." : "Downloads aren't available for your account."),
+                    React.createElement("span", null, downloadBlockedMessage(downloadStatus === "denied" ? "denied" : null))))
+            : React.createElement(React.Fragment, null,
+                recipeResult && React.createElement("div", { className: "recipe-warning", role: "alert" }, recipeMissing
+                    ? `This file has no ${recipeResult.missing.join(" or ")} column, so the live deals file can't be built. Add the live deals pull instead.`
+                    : "This file has no live deals. Check that it's the full live deals pull."),
+                !recipeResult && React.createElement("div", { className: "recipe-state" },
+                    React.createElement("strong", null, "Ready once you add a pull"),
+                    React.createElement("span", null, "Add your live deals pull in step 01 and this file is one click away.")),
+                React.createElement("div", { className: "recipe-buttons" },
+                    React.createElement("button", { className: "export-button recipe-primary", disabled: true }, "Download CSV"),
+                    React.createElement("button", { className: "recipe-secondary", disabled: true }, "Download Excel")));
+    return (React.createElement("main", null,
+        React.createElement("header", { className: "topbar" },
+            React.createElement("a", { className: "brand", href: "#top", "aria-label": "DealSlice home" },
+                React.createElement("span", { className: "brand-mark" }, "DS"),
+                React.createElement("span", null, "DealSlice")),
+            React.createElement("div", { className: "privacy" },
+                React.createElement("span", { className: "privacy-dot" }),
+                " Your data stays in this browser")),
+        React.createElement("section", { className: "hero", id: "top" },
+            React.createElement("div", { className: "eyebrow" }, "DEAL DATA, WITHOUT THE NOISE"),
+            React.createElement("h1", null,
+                "Keep the columns.",
+                React.createElement("br", null),
+                React.createElement("em", null, "Lose the clutter.")),
+            React.createElement("p", null, "Drop in a deal data pull, turn nested JSON into clear columns, choose what the task needs, and download a clean CSV.")),
+        React.createElement("section", { className: `upload-strip ${rows.length ? "is-loaded" : ""}`, "aria-label": "Add your data pull" },
+            React.createElement("div", { className: "step-label" },
+                React.createElement("span", null, "01"),
+                " Add your data pull"),
+            React.createElement("div", { className: "upload-body" },
+                React.createElement("button", { className: `dropzone ${dragging ? "dragging" : ""} ${rows.length ? "loaded" : ""} ${isProcessing ? "processing" : ""}`, disabled: isProcessing, onClick: () => inputRef.current?.click(), onDragOver: (event) => { event.preventDefault(); setDragging(true); }, onDragLeave: () => setDragging(false), onDrop: onDrop, "aria-label": rows.length ? `Loaded ${fileLabel}. Choose a different file` : "Choose a data pull to upload" },
+                    React.createElement("span", { className: "upload-icon", "aria-hidden": "true" }, isProcessing ? "\u2026" : rows.length ? "\u2713" : "\u2191"),
+                    React.createElement("span", { className: "dropzone-text" },
+                        React.createElement("strong", null, isProcessing ? processingLabel : rows.length ? fileLabel : "Drop your live deals pull here, or click to choose it"),
+                        React.createElement("small", null, isProcessing
+                            ? "Decompressing and reading the pull. Large files take a few seconds."
+                            : rows.length
+                                ? `${rows.length.toLocaleString()} rows and ${columns.length.toLocaleString()} columns ready. Drop another file here to replace it.`
+                                : "CSV, CSV.GZ, TSV, JSON, XLSX or XLS. Everything below works from this one file."))),
+                React.createElement("input", { ref: inputRef, hidden: true, type: "file", accept: ".csv,.csv.gz,.tsv,.tsv.gz,.txt,.txt.gz,.gz,.json,.xlsx,.xls", disabled: isProcessing, onChange: onFileChange }),
+                React.createElement("div", { className: "upload-side" },
+                    rows.length > 0 ? (React.createElement("div", { className: "file-actions", role: "group", "aria-label": "Uploaded file actions" },
+                        React.createElement("button", { className: "change-file-button", type: "button", disabled: isProcessing, onClick: () => inputRef.current?.click() }, "Change file"),
+                        React.createElement("button", { className: "remove-file-button", type: "button", disabled: isProcessing, onClick: removeFile }, "Remove file"))) : (React.createElement("button", { className: "sample-button", disabled: isProcessing, onClick: () => loadSample() }, "Try sample deal data")),
+                    React.createElement("div", { className: "upload-facts" },
+                        React.createElement("div", null,
+                            React.createElement("strong", null, "JSON \u2192 CSV"),
+                            React.createElement("span", null, conversionDetail)),
+                        React.createElement("div", null,
+                            React.createElement("strong", null, "Private"),
+                            React.createElement("span", null, "Files are processed on your device and never uploaded.")))))),
+        error && React.createElement("div", { className: "error-banner", role: "alert" },
+            React.createElement("strong", null, errorTitle),
+            " ",
+            error,
+            React.createElement("button", { onClick: () => setError(""), "aria-label": "Dismiss error" }, "\u00D7")),
+        React.createElement("section", { className: `recipe ${recipeReady ? "" : "waiting"}`, "aria-label": liveDealsRecipe.title },
+            React.createElement("div", { className: "recipe-intro" },
+                React.createElement("h2", null, liveDealsRecipe.title),
+                React.createElement("p", null, "Every live deal in your pull with its target, IDs, HQ, sector and suitors, sorted A to Z. Completed deals and every other column are left out."),
+                React.createElement("div", { className: "recipe-columns", "aria-label": "Columns in the file" }, liveDealsRecipe.headers.map((header) => React.createElement("code", { key: header }, header)))),
+            React.createElement("div", { className: "recipe-action" }, recipeAction),
+            recipeReady && (React.createElement("div", { className: "recipe-preview" },
+                React.createElement("table", null,
+                    React.createElement("thead", null,
+                        React.createElement("tr", null, liveDealsRecipe.headers.map((header) => React.createElement("th", { key: header }, header)))),
+                    React.createElement("tbody", null, recipeResult.rows.slice(0, 4).map((row, rowIndex) => (React.createElement("tr", { key: rowIndex }, row.map((value, cellIndex) => React.createElement("td", { key: cellIndex, title: value }, value)))))))))),
+        React.createElement("div", { className: "path-divider", role: "separator" },
+            React.createElement("span", null, "Or build your own view")),
+        React.createElement("section", { className: "task-bar", "aria-label": "Task-based column suggestions" },
+            React.createElement("div", null,
+                React.createElement("span", { className: "task-kicker" }, "QUICK SELECT"),
+                React.createElement("strong", null, "Tell DealSlice what you\u2019re working on")),
+            React.createElement("input", { value: task, onChange: (event) => setTask(event.target.value), onKeyDown: (event) => { if (event.key === "Enter")
+                    suggestColumns(); }, placeholder: "e.g. Bidder stages, advisors and BO deadline", "aria-label": "Describe the task" }),
+            React.createElement("button", { onClick: suggestColumns },
+                "Suggest columns ",
+                React.createElement("span", null, "\u2192"))),
+        React.createElement("section", { className: "workspace", "aria-label": "Column selector workspace" },
+            React.createElement("div", { className: "step-card selector-card" },
+                React.createElement("div", { className: "step-heading" },
+                    React.createElement("div", { className: "step-label" },
+                        React.createElement("span", null, "02"),
+                        " Choose the view"),
+                    React.createElement("div", { className: "selection-actions" },
+                        React.createElement("button", { onClick: () => { setSelected(columns); setActivePreset("custom"); } }, "All"),
+                        React.createElement("button", { onClick: () => { setSelected([]); setActivePreset("custom"); } }, "Clear"))),
+                React.createElement("div", { className: "preset-row" }, presets.map((preset) => (React.createElement("button", { className: `preset ${activePreset === preset.id ? "active" : ""}`, key: preset.id, onClick: () => applyPreset(preset), title: preset.hint }, preset.label)))),
+                React.createElement("div", { className: "my-presets", "aria-label": "Your presets" },
+                    React.createElement("div", { className: "my-presets-heading" },
+                        React.createElement("strong", null, "Your presets"),
+                        React.createElement("span", null, presetStorageOk ? "Saved in this browser" : "Can't be saved in this browser")),
+                    savedPresets.length > 0 && (React.createElement("div", { className: "preset-row saved-row" }, savedPresets.map((preset) => (React.createElement("span", { key: preset.id, className: `saved-preset ${activePreset === `saved:${preset.id}` ? "active" : ""}` },
+                        React.createElement("button", { className: `preset ${activePreset === `saved:${preset.id}` ? "active" : ""}`, onClick: () => applySavedPreset(preset), title: describeSavedPreset(preset) }, preset.name),
+                        React.createElement("button", { className: "saved-remove", onClick: () => deletePreset(preset), "aria-label": `Delete preset ${preset.name}`, title: "Delete preset" }, "\u00d7")))))),
+                    savedPresets.length === 0 && !savingPreset && !lastDeletedPreset && presetStorageOk && (React.createElement("p", { className: "my-presets-empty" }, "Pick your columns and filters, then save them here to reuse with the next pull.")),
+                    lastDeletedPreset && (React.createElement("p", { className: "my-presets-undo", role: "status" },
+                        "Deleted \u201c",
+                        lastDeletedPreset.preset.name,
+                        "\u201d. ",
+                        React.createElement("button", { onClick: undoDeletePreset }, "Undo"))),
+                    presetStorageOk && (savingPreset ? (React.createElement("div", { className: "save-preset-panel" },
+                        React.createElement("div", { className: "save-preset-form" },
+                            React.createElement("input", { ref: presetNameRef, value: presetName, maxLength: 40, placeholder: "Name this preset, e.g. Europe BO pipeline", "aria-label": "Preset name", onChange: (event) => setPresetName(event.target.value), onKeyDown: (event) => {
+                                    if (event.key === "Enter")
+                                        savePreset();
+                                    if (event.key === "Escape")
+                                        cancelPresetSave();
+                                } }),
+                            React.createElement("button", { className: "confirm", disabled: !presetName.trim() || !selected.length, onClick: savePreset }, presetNameTaken ? "Update" : "Save"),
+                            React.createElement("button", { className: "cancel", onClick: cancelPresetSave }, "Cancel")),
+                        React.createElement("small", null, selected.length
+                            ? `Saves ${describeSavedPreset({ columns: selected, status: statusColumn ? statusFilter : "all", hq: hqColumn ? hqFilters : [], sort: activeSort })}${presetNameTaken ? `, replacing your existing \u201c${presetNameTaken.name}\u201d` : ""}.`
+                            : "Choose at least one column first."))) : (React.createElement("button", { className: "save-preset", onClick: openPresetSave, disabled: !selected.length }, "+ Save current view")))),
+                rows.length > 0 && statusColumn && (React.createElement("div", { className: "hq-filter", "aria-label": `Filter rows using ${statusColumn}` },
+                    React.createElement("div", { className: "hq-filter-heading" },
+                        React.createElement("strong", null, "Filter rows by deal status"),
+                        React.createElement("span", null,
+                            "Using ",
+                            statusColumn)),
+                    React.createElement("div", { className: "hq-filter-buttons" }, [["all", "All", rows.length], ["live", "Live", statusCounts.live], ["completed", "Completed", statusCounts.completed], ["other", "Other", statusCounts.other]]
+                        .filter(([id, , count]) => id !== "other" || count > 0)
+                        .map(([id, label, count]) => (React.createElement("button", { key: id, className: statusFilter === id ? "active" : "", "aria-pressed": statusFilter === id, onClick: () => setStatusFilter(id) },
+                            label,
+                            " ",
+                            React.createElement("span", null, count.toLocaleString()))))),
+                    !hqColumn && React.createElement("small", null,
+                        filteredRows.length.toLocaleString(),
+                        " matching rows will be previewed and exported"))),
+                rows.length > 0 && hqColumn && (React.createElement("div", { className: "hq-filter", "aria-label": `Filter rows using ${hqColumn}` },
+                    React.createElement("div", { className: "hq-filter-heading" },
+                        React.createElement("strong", null, "Filter rows by HQ"),
+                        React.createElement("span", null,
+                            "Using ",
+                            hqColumn)),
+                    React.createElement("div", { className: "hq-filter-buttons" },
+                        React.createElement("button", { className: !hqFilters.length ? "active" : "", "aria-pressed": !hqFilters.length, onClick: () => setHqFilters([]) },
+                            "All ",
+                            React.createElement("span", null, statusRows.length.toLocaleString())),
+                        ["US", "Europe", "UK", "Other", "Unknown"].map((region) => (React.createElement("button", { key: region, className: hqFilters.includes(region) ? "active" : "", "aria-pressed": hqFilters.includes(region), onClick: () => toggleHqFilter(region) },
+                            region,
+                            " ",
+                            React.createElement("span", null, hqCounts[region].toLocaleString()))))),
+                    React.createElement("small", null,
+                        filteredRows.length.toLocaleString(),
+                        " matching rows will be previewed and exported"))),
+                React.createElement("label", { className: "search-wrap" },
+                    React.createElement("span", null, "\u2315"),
+                    React.createElement("input", { value: search, onChange: (event) => setSearch(event.target.value), placeholder: "Find a column\u2026" }),
+                    search && React.createElement("button", { onClick: () => setSearch(""), "aria-label": "Clear search" }, "\u00D7")),
+                React.createElement("div", { className: "column-meta" },
+                    React.createElement("span", null,
+                        filteredColumns.length,
+                        " of ",
+                        columns.length,
+                        " columns"),
+                    React.createElement("span", null, notice)),
+                React.createElement("div", { className: "column-list" },
+                    filteredColumns.map((column) => (React.createElement("label", { className: "column-row", key: column },
+                        React.createElement("input", { type: "checkbox", checked: selected.includes(column), onChange: () => toggleColumn(column) }),
+                        React.createElement("span", { className: "checkmark" }),
+                        React.createElement("code", { title: column }, column),
+                        React.createElement("span", { className: "field-tag" }, columnTypes[column] ?? "FIELD")))),
+                    !filteredColumns.length && React.createElement("div", { className: "empty-columns" },
+                        "No columns match \u201C",
+                        search,
+                        "\u201D"))),
+            React.createElement("aside", { className: "summary-card" },
+                React.createElement("div", { className: "step-label light" },
+                    React.createElement("span", null, "03"),
+                    " Export clean columns"),
+                React.createElement("div", { className: "summary-count" },
+                    React.createElement("strong", null, selected.length),
+                    React.createElement("span", null,
+                        "of ",
+                        columns.length,
+                        " columns selected")),
+                React.createElement("div", { className: "summary-list" },
+                    selected.slice(0, 6).map((column) => React.createElement("div", { key: column, title: headerFor(column) !== column ? `${column} is exported as ${headerFor(column)}` : column }, headerFor(column) !== column ? `${column} \u2192 ${headerFor(column)}` : column)),
+                    activeSort && selected.length > 0 && React.createElement("div", { className: "summary-sort" }, "Rows sorted A to Z by ", headerFor(activeSort)),
+                    selected.length > 6 && React.createElement("div", { className: "more" },
+                        "+ ",
+                        selected.length - 6,
+                        " more"),
+                    !selected.length && React.createElement("div", { className: "summary-empty" }, "Choose at least one column")),
+                React.createElement("label", { className: "filename-label" },
+                    "Output name",
+                    React.createElement("input", { value: filename, onChange: (event) => setFilename(cleanFilename(event.target.value)), onBlur: () => setFilename(finalFilename(filename)) })),
+                React.createElement("button", { className: "export-button", disabled: !rows.length || !selected.length || isSaving, onClick: exportCsv },
+                    "Download clean CSV ",
+                    React.createElement("span", null, "\u2192")),
+                React.createElement("div", { className: "secondary-exports" },
+                    React.createElement("button", { disabled: !rows.length || !selected.length || isSaving, onClick: exportExcel }, "Excel alternative"),
+                    React.createElement("button", { disabled: !rows.length || !selected.length, onClick: () => copyTable("custom") }, "Copy for Excel or Sheets")),
+                copyBlock("custom"),
+                saveError && saveError.where === "custom" ? React.createElement("div", { className: "save-alert", role: "alert" },
+                    React.createElement("strong", null, "Couldn\u2019t download the file."),
+                    React.createElement("span", null, saveError.message)) : (downloadStatus === "denied" || downloadStatus === "unavailable") && rows.length > 0 && React.createElement("div", { className: "save-alert subtle", role: "status" },
+                    React.createElement("strong", null, downloadStatus === "denied" ? "Downloads are switched off for you here." : "Downloads aren't available for your account."),
+                    React.createElement("span", null, downloadBlockedMessage(downloadStatus === "denied" ? "denied" : null))),
+                React.createElement("p", { className: "export-note" },
+                    "The CSV includes ",
+                    anyFilter ? `${filteredRows.length.toLocaleString()} matching rows` : "every row",
+                    " and only your chosen columns."))),
+        rows.length > 0 && (React.createElement("section", { className: "preview-section", "aria-label": "Selected data preview" },
+            React.createElement("div", { className: "preview-heading" },
+                React.createElement("div", null,
+                    React.createElement("span", { className: "task-kicker" }, "LIVE PREVIEW"),
+                    React.createElement("h2", null, "Your focused dataset")),
+                React.createElement("p", null,
+                    "Showing ",
+                    Math.min(5, filteredRows.length),
+                    " of ",
+                    filteredRows.length.toLocaleString(),
+                    anyFilter ? ` matching rows (${rows.length.toLocaleString()} total)` : " rows")),
+            selected.length ? (React.createElement("div", { className: "table-wrap" },
+                React.createElement("table", null,
+                    React.createElement("thead", null,
+                        React.createElement("tr", null, selected.map((column) => React.createElement("th", { key: column, title: headerFor(column) !== column ? `From ${column}` : undefined }, headerFor(column))))),
+                    React.createElement("tbody", null, previewRows.map((row, rowIndex) => (React.createElement("tr", { key: rowIndex }, selected.map((column) => React.createElement("td", { key: column, title: String(row[column] ?? "") }, row[column] === null ? React.createElement("span", { className: "null-value" }, "null") : String(row[column])))))))))) : React.createElement("div", { className: "empty-preview" }, "Select columns above to preview your output."))),
+        React.createElement("footer", null,
+            React.createElement("div", null,
+                React.createElement("span", { className: "brand-mark" }, "DS"),
+                React.createElement("strong", null, "DealSlice")),
+            React.createElement("p", null, "Built for focused deal work. No account, no data storage."))));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(Home));
+
+})();
+</script>
+</body>
+</html>
